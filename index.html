@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ٹیکسلا یونیورسٹی – انٹرایکٹو سبق</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* فونٹ: اگر کمپیوٹر میں Jameel Noori Nastaleeq انسٹال ہے تو وہی استعمال ہوگا۔
+   ورنہ اس HTML کے ساتھ والے فولڈر میں فونٹ فائل کا نام  JameelNooriNastaleeq.ttf  رکھ کر لگا دیں۔ */
+@font-face{font-family:"JNN";src:local("Jameel Noori Nastaleeq"),local("JameelNooriNastaleeq"),local("Jameel Noori Nastaleeq Regular"),url("JameelNooriNastaleeq.ttf") format("truetype"),url("Jameel Noori Nastaleeq.ttf") format("truetype");font-display:swap}
+:root{--green:#8cc63f;--green-d:#5e9a1e;--terra:#e2703a;--teal:#1aa6a6;--ink:#2b2a33;--purple:#6c4bd6;--gold:#f7b500;--rose:#e84a7f;--sky:#3f9bff;--sand:#fff6e0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"JNN","Jameel Noori Nastaleeq","Noto Nastaliq Urdu","Segoe UI Emoji","Noto Color Emoji",serif;font-size:19px;line-height:2.2;color:var(--ink);background:#fff8e6;background-image:radial-gradient(circle at 15% 8%,#ffe9b8 0,transparent 38%),radial-gradient(circle at 92% 28%,#d9f2b8 0,transparent 34%),radial-gradient(circle at 50% 100%,#cfeaff 0,transparent 40%);background-attachment:fixed;padding-bottom:190px;overflow-x:hidden}
+button,textarea,input{font-family:inherit;font-size:inherit}
+b{font-weight:700}
+#cf{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:200}
+
+/* ---------- ہیڈر ---------- */
+.hdr{position:sticky;top:0;z-index:60}
+.topbar{background:linear-gradient(90deg,#5e9a1e,#8cc63f);color:#fff;display:flex;align-items:center;gap:8px;padding:2px 12px;box-shadow:0 4px 14px #0003}
+.brand{font-size:1.25em;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill{background:#ffffff33;border:0;color:#fff;border-radius:99px;padding:0 12px;white-space:nowrap;cursor:pointer}
+.xpbar{height:7px;background:#00000026}
+.xpbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd23f,#ff8a3d);transition:width .6s;border-radius:0 4px 4px 0}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:6px 10px;background:#fffdf5f2;backdrop-filter:blur(6px);border-bottom:3px dashed #e5d7a8;scrollbar-width:thin}
+.tab{flex:none;border:0;border-radius:16px;padding:0 14px;background:#fff;cursor:pointer;box-shadow:0 3px 0 #d9c98f;color:var(--ink);transition:.15s;position:relative}
+.tab.active{background:var(--terra);color:#fff;box-shadow:0 3px 0 #a9461b}
+.tab .dn{position:absolute;top:-4px;inset-inline-start:-2px;font-size:.7em;line-height:1.2}
+main{max-width:1040px;margin:auto}
+
+/* ---------- عمومی ---------- */
+.sec{display:none;padding:8px 10px}
+.sec.active{display:block;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.banner{background:var(--green);color:#fff;border-radius:20px;padding:4px 20px;text-align:center;font-size:1.55em;box-shadow:inset 0 -7px 0 #0000001f,0 6px 0 #4d8216;margin:14px 0 20px}
+.card{background:#fff;border-radius:26px;padding:16px 20px;margin:16px 0;box-shadow:0 7px 0 #0000000d,0 14px 30px #0000001a;border:3px solid #fff}
+.card h2,.card h3{margin:0 0 4px}
+.card h2{font-size:1.35em;color:var(--terra)}
+.card h3{font-size:1.15em;color:var(--purple)}
+.hint{background:#fff3c4;border:2px dashed #e6bd2c;border-radius:18px;padding:2px 16px;margin:10px 0}
+.btn{border:0;border-radius:18px;padding:2px 22px;background:var(--terra);color:#fff;cursor:pointer;box-shadow:0 5px 0 #a9461b;transition:.12s;margin:4px}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #a9461b}
+.btn.green{background:var(--green-d);box-shadow:0 5px 0 #3f6a0e}
+.btn.teal{background:var(--teal);box-shadow:0 5px 0 #0c7474}
+.btn.purple{background:var(--purple);box-shadow:0 5px 0 #4328a8}
+.btn.gold{background:var(--gold);color:#4a3600;box-shadow:0 5px 0 #b88700}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:0 5px 0 #d9c98f;border:2px solid #eadfb5}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.nextwrap{text-align:center;margin:26px 0}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(9px)}40%,80%{transform:translateX(-9px)}}
+.grow{animation:grow .5s}
+@keyframes grow{0%{transform:scale(.7)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.center{text-align:center}
+.bar{height:16px;border-radius:99px;background:#eee;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#8cc63f,#2fa84f);width:0;transition:width .6s;border-radius:99px}
+
+/* ---------- آغاز ---------- */
+.hero{padding:0;overflow:hidden}
+.hero svg{display:block;width:100%;height:auto}
+.hero-t{padding:6px 20px 18px;text-align:center}
+.ribbon{display:inline-block;background:var(--green);color:#fff;font-size:2em;padding:0 40px;border-radius:14px;box-shadow:0 6px 0 #4d8216;margin-top:-6px}
+.sub{color:#777;font-size:.95em}
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:10px}
+.stn{border:0;border-radius:22px;padding:10px 8px;cursor:pointer;color:#fff;box-shadow:0 6px 0 #00000026;transition:.15s;position:relative;text-align:center}
+.stn:hover{transform:translateY(-4px) rotate(-1deg)}
+.stn .em{font-size:2.1em;display:block;line-height:1.5}
+.stn.ok::after{content:"✅";position:absolute;top:2px;inset-inline-start:8px;font-size:1.3em}
+.ring{--p:0;width:96px;height:96px;border-radius:50%;background:conic-gradient(var(--green-d) calc(var(--p)*1%),#e8e8e8 0);display:grid;place-items:center;flex:none}
+.ring b{background:#fff;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;line-height:1}
+.fact{background:linear-gradient(135deg,#e7f6ff,#fff3d6);border-radius:20px;padding:6px 18px;border:3px dashed #8fc9ff;min-height:80px}
+.sun{transform-origin:640px 70px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cl1{animation:drift 30s linear infinite alternate}.cl2{animation:drift 45s linear infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(-60px)}to{transform:translateX(80px)}}
+.walker{animation:walk 14s linear infinite}
+@keyframes walk{from{transform:translateX(-80px)}to{transform:translateX(900px)}}
+.bird{animation:fly 18s linear infinite}
+@keyframes fly{from{transform:translate(-60px,0)}to{transform:translate(880px,-40px)}}
+
+/* ---------- پیراگراف ---------- */
+.pcard{background:#fff;border-radius:22px;margin:14px 0;box-shadow:0 6px 0 #00000012,0 10px 24px #0000001a;overflow:hidden;border:3px solid #fff}
+.phead{width:100%;border:0;background:linear-gradient(90deg,#fff,#fff8dd);display:flex;gap:10px;align-items:center;padding:2px 14px;cursor:pointer;color:var(--ink);text-align:start}
+.pnum{background:var(--terra);color:#fff;border-radius:50%;width:2em;height:2em;display:grid;place-items:center;line-height:1;flex:none}
+.pemo{font-size:1.5em}
+.ptitle{flex:1;font-size:1.1em}
+.pchk{font-size:1.2em}
+.pbody{display:none;padding:6px 18px 16px;border-top:3px dashed #f0e4b8}
+.pcard.open .pbody{display:block;animation:pop .35s}
+.ptext{font-size:1.08em;line-height:2.5;background:#fffdf3;border-radius:16px;padding:6px 16px}
+.kw{color:var(--purple);background:#efe8ff;border-bottom:3px dotted var(--purple);border-radius:6px;padding:0 3px;cursor:pointer}
+.gist{background:#e6f9d3;border-radius:16px;padding:2px 16px;margin:10px 0;border:2px solid #9fd36a;animation:grow .5s}
+.mcq{background:#f3f9ff;border-radius:18px;padding:6px 16px 10px;margin-top:12px;border:2px solid #cfe6ff}
+.mcq .q{color:#0d5aa7;font-size:1.08em}
+.opt{display:block;width:100%;text-align:start;border:3px solid #e8dcc0;background:#fffdf6;border-radius:16px;padding:0 16px;margin:8px 0;cursor:pointer;transition:.15s;color:var(--ink)}
+.opt:hover:not(:disabled){transform:translateX(-5px);border-color:var(--teal)}
+.opt.ok{background:#d8f5c0;border-color:#5aa51f}
+.opt.bad{background:#ffd9d9;border-color:#e0534f;opacity:.75}
+.fb{min-height:1.5em;color:#2d6a0a}
+#tip{position:fixed;z-index:120;background:#2b2a33;color:#fff;border-radius:16px;padding:2px 16px;max-width:280px;display:none;box-shadow:0 10px 30px #0006;line-height:2}
+#tip b{color:#ffd23f}
+
+/* ---------- الفاظ ---------- */
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
+.flip{perspective:900px;height:210px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 10px;text-align:center;box-shadow:0 6px 0 #00000020}
+.front{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+.front .em{font-size:2.6em;line-height:1.4}
+.front .w{font-size:1.25em}
+.back{background:#fff;border:4px solid var(--c1);transform:rotateY(180deg);font-size:.82em;line-height:2}
+.back .m{color:var(--c1);font-size:1.12em}
+.back .ex{color:#666;font-size:.92em}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mbtn{display:block;width:100%;border:3px solid #e6d9ff;background:#faf7ff;border-radius:16px;padding:0 10px;margin:8px 0;cursor:pointer;line-height:1.9;min-height:56px;color:var(--ink);transition:.15s}
+.mbtn.m2{border-color:#cfeeee;background:#f2fdfd;font-size:.86em}
+.mbtn.sel{background:var(--purple);color:#fff;transform:scale(1.04)}
+.mbtn.done{background:#d8f5c0;border-color:#5aa51f;color:#2d6a0a;pointer-events:none;opacity:.8}
+
+/* ---------- مرکزی خیال / خلاصہ ---------- */
+.pillars svg{width:100%;max-width:420px;display:block;margin:auto}
+.col{fill:#e8dcc0;stroke:#c9b27a;stroke-width:3;transition:.5s}
+.col.lit{fill:url(#gold);filter:drop-shadow(0 0 10px #ffd23f)}
+.stmt{display:block;width:100%;text-align:start;border:3px solid #e8dcc0;background:#fffdf6;border-radius:16px;padding:0 16px;margin:8px 0;cursor:pointer;color:var(--ink);transition:.15s}
+.stmt.ok{background:#d8f5c0;border-color:#5aa51f;pointer-events:none}
+.stmt.bad{background:#ffd9d9;border-color:#e0534f}
+textarea{width:100%;min-height:96px;border:3px solid #e8dcc0;border-radius:16px;padding:8px 14px;background:#fffdf6;resize:vertical;line-height:2.1;color:var(--ink)}
+textarea:focus{outline:none;border-color:var(--teal)}
+.slide{border-radius:24px;padding:10px 22px 16px;color:#fff;text-align:center;min-height:300px;display:flex;flex-direction:column;justify-content:center;animation:pop .4s;box-shadow:inset 0 -8px 0 #0002}
+.slide .big{font-size:4em;line-height:1.4;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.slide h3{color:#fff;font-size:1.5em}
+.slide p{font-size:1.1em;line-height:2.4;margin:4px 0}
+.dots{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.dots i{width:14px;height:14px;border-radius:50%;background:#ddd;transition:.3s}
+.dots i.on{background:var(--terra);transform:scale(1.4)}
+.ctext{background:#fffdf3;border-radius:18px;padding:6px 16px;line-height:2.8}
+.blank{border:3px dashed var(--purple);background:#f4efff;border-radius:12px;min-width:90px;padding:0 10px;cursor:pointer;color:var(--purple);margin:0 3px}
+.blank.act{background:#e0d4ff;box-shadow:0 0 0 4px #d3c3ff}
+.blank.filled{border-style:solid;color:var(--ink)}
+.blank.ok{background:#d8f5c0;border-color:#5aa51f}
+.blank.no{background:#ffd9d9;border-color:#e0534f}
+.chip{border:0;border-radius:14px;padding:0 16px;background:var(--sky);color:#fff;cursor:pointer;margin:4px;box-shadow:0 4px 0 #1e6fcc}
+.chip:disabled{opacity:.3}
+.chip.tg{background:#fff;color:var(--ink);box-shadow:0 4px 0 #d9c98f;border:2px solid #eadfb5}
+.chip.tg.sel{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:0 4px 0 #0c7474}
+.chip.tg.ok{background:#d8f5c0;color:#2d6a0a;border-color:#5aa51f}
+.chip.tg.no{background:#ffd9d9;color:#a82d2d;border-color:#e0534f}
+
+/* ---------- کھیل ---------- */
+.clue{background:#fff3c4;border-radius:14px;padding:0 14px;margin:6px 0;animation:grow .4s}
+.tfcard{text-align:center;font-size:1.3em;min-height:130px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eaf6ff,#fff6dd);border-radius:22px;padding:4px 18px;line-height:2.3}
+.tfb{font-size:1.2em;min-width:130px}
+.streak{color:var(--rose)}
+
+/* ---------- ٹائم لائن ---------- */
+.stabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.stab{border:0;border-radius:16px;padding:0 16px;cursor:pointer;background:#fff;box-shadow:0 4px 0 #d9c98f;color:var(--ink)}
+.stab.on{background:var(--purple);color:#fff;box-shadow:0 4px 0 #4328a8}
+.stab:disabled{opacity:.5;cursor:not-allowed}
+.tm{border-radius:26px;padding:12px 22px 20px;color:#fff;text-align:center;position:relative;overflow:hidden;min-height:330px;box-shadow:inset 0 -9px 0 #0002,0 10px 24px #0003;transition:background .5s}
+.tm .big{font-size:4.6em;line-height:1.4;position:relative;z-index:2;animation:bob 2.2s ease-in-out infinite}
+.tm .yr{display:inline-block;background:#fff;color:var(--ink);border-radius:99px;padding:0 24px;font-size:1.4em;position:relative;z-index:2;box-shadow:0 5px 0 #0003}
+.tm h3{color:#fff;font-size:1.5em;position:relative;z-index:2;margin:6px 0 0}
+.tm p{position:relative;z-index:2;font-size:1.08em;line-height:2.4;margin:0 auto;max-width:700px}
+.fl{position:absolute;bottom:-40px;opacity:.22;font-size:2.2em;animation:up linear infinite;z-index:1}
+@keyframes up{to{transform:translateY(-420px) rotate(25deg)}}
+.path{position:relative;height:74px;margin:14px 6px 0}
+.path::before{content:"";position:absolute;inset-inline:0;top:34px;height:8px;background:repeating-linear-gradient(90deg,#c9b27a 0 14px,transparent 14px 24px);border-radius:4px}
+.pn{position:absolute;top:22px;width:30px;height:30px;border-radius:50%;border:4px solid #c9b27a;background:#fff;cursor:pointer;transform:translateX(50%);padding:0;font-size:.62em;line-height:1;color:var(--ink)}
+[dir=rtl] .pn{transform:translateX(50%)}
+.pn.past{background:var(--green);border-color:var(--green-d);color:#fff}
+.pn.on{background:var(--terra);border-color:#a9461b;color:#fff;transform:translateX(50%) scale(1.35)}
+.rider{position:absolute;top:-4px;font-size:1.9em;transform:translateX(50%);transition:inset-inline-start .6s ease;z-index:3;line-height:1.2}
+.tray{display:flex;flex-wrap:wrap;gap:10px;background:#f4efff;border-radius:20px;padding:10px;border:3px dashed #c9b6ff;min-height:80px}
+.ecard{border:0;border-radius:18px;padding:2px 14px;cursor:grab;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 5px 0 #0003;transition:.15s;text-align:center;line-height:1.9;min-width:140px}
+.ecard small{display:block;font-size:.78em;opacity:.95}
+.ecard.sel{transform:scale(1.1) rotate(-2deg);box-shadow:0 0 0 5px #ffd23f,0 6px 0 #0003}
+.roadmap{position:relative;margin-top:14px;padding-inline-start:52px}
+.roadmap::before{content:"";position:absolute;inset-inline-start:21px;top:0;bottom:0;width:8px;background:repeating-linear-gradient(#c9b27a 0 14px,transparent 14px 22px);border-radius:4px}
+.slot{position:relative;margin:14px 0;border-radius:20px;padding:6px 16px;min-height:76px;border:3px dashed #c9b27a;background:#fffdf6;display:flex;align-items:center;color:#a59467;cursor:pointer;transition:.15s}
+.slot:hover,.slot.dropt{border-color:var(--purple);background:#f4efff}
+.slot .node{position:absolute;inset-inline-start:-52px;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:50%;background:#fff;border:5px solid #c9b27a;display:grid;place-items:center;line-height:1;color:var(--ink);z-index:2}
+.slot.filled{display:block;border:0;color:var(--ink);background:#fff;box-shadow:0 6px 0 #0000001a,0 10px 24px #0000001a;cursor:default;padding:8px 18px 14px;border-inline-start:10px solid var(--c1);animation:grow .55s}
+.slot.filled .node{background:linear-gradient(135deg,var(--c1),var(--c2));border-color:#fff;color:#fff;box-shadow:0 0 0 4px var(--c1)}
+.shead{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.shead .semo{font-size:1.8em}
+.syear{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border-radius:99px;padding:0 14px;font-size:.9em}
+.stick{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0}
+.stick button{border:3px solid #eee;background:#fff;border-radius:12px;font-size:1.3em;cursor:pointer;padding:0 6px;line-height:1.6}
+.stick button.on{border-color:var(--gold);background:#fff7d1;transform:scale(1.15)}
+.saved{color:#2d8a0a}
+.bookp{border-inline-start:8px solid var(--c1);background:#fff;border-radius:16px;padding:4px 16px;margin:10px 0;box-shadow:0 3px 10px #0001}
+.bookp.empty{opacity:.45;border-color:#ccc}
+.bookp .nt{background:#fffbe8;border-radius:12px;padding:2px 12px}
+
+/* ---------- انعامات ---------- */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.bdg{border-radius:20px;text-align:center;padding:6px 8px;background:#eee;filter:grayscale(1);opacity:.55;line-height:1.9}
+.bdg.on{filter:none;opacity:1;background:linear-gradient(135deg,#fff3c4,#ffe08a);box-shadow:0 5px 0 #d4a500;animation:grow .6s}
+.bdg .em{font-size:2.4em;line-height:1.4;display:block}
+.bdg small{display:block;font-size:.72em;color:#666}
+.cert{border:10px double #b8860b;border-radius:10px;background:#fffdf0;padding:10px;margin:14px 0}
+.cert-in{border:3px solid #e6c35c;padding:10px 26px 18px;text-align:center;position:relative}
+.cert-t{font-size:2em;color:#8a5a00}
+.seal{font-size:3.4em;line-height:1.3}
+.stars{font-size:2.6em;letter-spacing:6px}
+
+/* ---------- اُلّو ساتھی ---------- */
+#owl{position:fixed;left:8px;bottom:6px;z-index:90;width:96px;pointer-events:none}
+#owl svg{width:96px;height:auto;display:block;filter:drop-shadow(0 6px 6px #0003);animation:idle 3s ease-in-out infinite}
+@keyframes idle{50%{transform:translateY(-6px)}}
+#owl.talk svg{animation:hop .5s ease 2}
+@keyframes hop{50%{transform:translateY(-18px) rotate(-6deg)}}
+#bubble{position:absolute;left:92px;bottom:70px;width:max-content;max-width:min(300px,62vw);background:#fff;border:3px solid var(--green-d);border-radius:20px 20px 20px 4px;padding:0 14px;opacity:0;transform:scale(.6);transform-origin:bottom left;transition:.25s;pointer-events:none;box-shadow:0 8px 20px #0003;line-height:2.1;font-size:.9em}
+#bubble.show{opacity:1;transform:scale(1)}
+#toast{position:fixed;top:112px;left:50%;transform:translate(-50%,-30px);z-index:150;background:linear-gradient(135deg,#ffd23f,#ff9a3d);color:#3a2500;border-radius:22px;padding:2px 24px;box-shadow:0 12px 30px #0005;opacity:0;pointer-events:none;transition:.4s;text-align:center;max-width:90vw}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.xpf{position:fixed;z-index:160;color:var(--green-d);font-size:1.6em;pointer-events:none;animation:xpup 1.2s ease-out forwards;text-shadow:0 2px 0 #fff,0 0 8px #fff}
+@keyframes xpup{to{transform:translateY(-70px);opacity:0}}
+#modal{position:fixed;inset:0;z-index:300;background:#2b2a33cc;display:none;align-items:center;justify-content:center;padding:16px}
+#modal.show{display:flex}
+#modal .box{background:#fff;border-radius:30px;padding:10px 26px 22px;max-width:460px;width:100%;text-align:center;animation:grow .5s}
+#modal input{width:100%;border:3px solid #e8dcc0;border-radius:16px;padding:0 14px;text-align:center;margin:10px 0;background:#fffdf6}
+#printSheet{display:none}
+@media (max-width:620px){
+ body{font-size:17px}
+ .mcols{gap:8px}.lvl{display:none}
+ .brand{font-size:1.05em}
+ #owl{width:70px}#owl svg{width:70px}#bubble{left:66px;bottom:52px}
+ .ribbon{font-size:1.5em;padding:0 22px}
+}
+@media print{
+ body{background:#fff!important;padding:0!important}
+ body>*:not(#printSheet){display:none!important}
+ #printSheet{display:block!important;font-size:16px}
+ .bookp{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<canvas id="cf"></canvas>
+
+<header class="hdr">
+ <div class="topbar">
+  <div class="brand">🏛️ ٹیکسلا یونیورسٹی</div>
+  <button class="pill" id="nameChip">👤 <span id="nm"></span></button>
+  <div class="pill lvl" id="lvl"></div>
+  <div class="pill">⭐ <span id="xp">۰</span></div>
+  <button class="pill" id="snd" title="آواز">🔊</button>
+ </div>
+ <div class="xpbar"><i id="xpf"></i></div>
+ <nav class="tabs" id="tabs"></nav>
+</header>
+
+<main id="main"></main>
+
+<div id="owl">
+ <div id="bubble"></div>
+ <svg viewBox="0 0 120 140" aria-hidden="true">
+  <ellipse cx="46" cy="134" rx="12" ry="5" fill="#f5a623"/><ellipse cx="74" cy="134" rx="12" ry="5" fill="#f5a623"/>
+  <ellipse cx="60" cy="96" rx="38" ry="38" fill="#8b5a2b"/>
+  <ellipse cx="60" cy="104" rx="24" ry="28" fill="#f3d9a4"/>
+  <g fill="#b08040"><path d="M48 96q4 4 8 0M64 96q4 4 8 0M48 108q4 4 8 0M64 108q4 4 8 0"/></g>
+  <ellipse cx="20" cy="98" rx="10" ry="26" fill="#6e4420" transform="rotate(10 20 98)"/>
+  <ellipse cx="100" cy="98" rx="10" ry="26" fill="#6e4420" transform="rotate(-10 100 98)"/>
+  <path d="M26 56 L20 30 L46 46Z" fill="#6e4420"/><path d="M94 56 L100 30 L74 46Z" fill="#6e4420"/>
+  <circle cx="60" cy="64" r="36" fill="#8b5a2b"/>
+  <circle cx="45" cy="62" r="14" fill="#fff"/><circle cx="75" cy="62" r="14" fill="#fff"/>
+  <circle cx="47" cy="63" r="7" fill="#2b2a33"/><circle cx="73" cy="63" r="7" fill="#2b2a33"/>
+  <circle cx="49" cy="60" r="2.4" fill="#fff"/><circle cx="75" cy="60" r="2.4" fill="#fff"/>
+  <path d="M53 72 L67 72 L60 86Z" fill="#f5a623"/>
+  <polygon points="60,18 102,34 60,50 18,34" fill="#2b2a33"/>
+  <path d="M38 42 v10 q22 10 44 0 v-10" fill="#3b3a46"/>
+  <path d="M102 34 v22" stroke="#ffd23f" stroke-width="3"/><circle cx="102" cy="58" r="4" fill="#ffd23f"/>
+ </svg>
+</div>
+<div id="tip"></div>
+<div id="toast"></div>
+<div id="modal"><div class="box">
+ <div style="font-size:3.4em;line-height:1.4">🦉</div>
+ <h2 style="color:#e2703a;margin:0">ٹیکسلا یونیورسٹی میں خوش آمدید!</h2>
+ <p style="margin:0">میں «ٹِکّو اُلّو» ہوں، تمہارا ساتھی۔ تمہارا نام کیا ہے؟</p>
+ <input id="nameIn" maxlength="24" placeholder="اپنا نام لکھو">
+ <button class="btn green" id="nameGo">سفر شروع کرو 🚀</button>
+</div></div>
+<div id="printSheet"></div>
+
+<script>
+(function(){
+'use strict';
+/* ====================== مددگار ====================== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const ur=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a};
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const h=html=>{const t=document.createElement('template');t.innerHTML=html.trim();return t.content.firstChild};
+const shake=el=>{el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake')};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ====================== حالت اور محفوظ کاری ====================== */
+const KEY='texila_lesson_v1';
+const DEF={name:'',xp:0,badges:{},words:{},paras:{},central:{},summary:0,match:0,cloze:0,riddles:0,subjects:0,tf:0,tlPlaced:{},tlNotes:{},tlStick:{},tlNoteXP:{},quiz:-1,sound:true};
+let S;
+try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){S=Object.assign({},DEF)}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+
+/* ====================== آواز ====================== */
+let AC=null;
+function tone(f,t0,d,type){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=type||'sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,AC.currentTime+t0);g.gain.exponentialRampToValueAtTime(.18,AC.currentTime+t0+.02);g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+t0+d);o.connect(g);g.connect(AC.destination);o.start(AC.currentTime+t0);o.stop(AC.currentTime+t0+d+.05)}catch(e){}}
+function sfx(k){if(!S.sound)return;if(k==='ok'){tone(660,0,.12);tone(880,.1,.18)}else if(k==='bad'){tone(220,0,.18,'square');tone(170,.14,.22,'square')}else if(k==='win'){[523,659,784,1046].forEach((f,i)=>tone(f,i*.12,.25,'triangle'))}else if(k==='tap'){tone(520,0,.06)}}
+
+/* ====================== کنفیٹی ====================== */
+const cv=$('#cf'),cx=cv.getContext?cv.getContext('2d'):null;let parts=[],raf=0;
+function fit(){cv.width=innerWidth;cv.height=innerHeight}fit();addEventListener('resize',fit);
+function confetti(n,x,y){if(!cx)return;const cols=['#ffd23f','#e2703a','#8cc63f','#3f9bff','#e84a7f','#6c4bd6'];
+ for(let i=0;i<(n||120);i++)parts.push({x:x==null?innerWidth/2:x,y:y==null?innerHeight/3:y,vx:(Math.random()-.5)*14,vy:Math.random()*-13-3,r:Math.random()*7+4,c:rnd(cols),a:Math.random()*6,va:(Math.random()-.5)*.4,life:110+Math.random()*40});
+ if(!raf)loop()}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.life>0);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.vx*=.99;p.a+=p.va;p.life--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.fillStyle=p.c;cx.globalAlpha=Math.min(1,p.life/40);cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore()});raf=parts.length?requestAnimationFrame(loop):0;if(!raf)cx.clearRect(0,0,cv.width,cv.height)}
+
+/* ====================== اُلّو کی باتیں، ٹوسٹ، پوائنٹس ====================== */
+let sayT;
+function say(msg,ms){const b=$('#bubble');b.textContent=msg;b.classList.add('show');$('#owl').classList.add('talk');clearTimeout(sayT);sayT=setTimeout(()=>{b.classList.remove('show');$('#owl').classList.remove('talk')},ms||4300)}
+let toastT;
+function toast(html){const t=$('#toast');t.innerHTML=html;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3600)}
+const LV=[{x:0,t:'نیا داخلہ',e:'🌱'},{x:100,t:'ہونہار شاگرد',e:'📘'},{x:250,t:'علم کا مسافر',e:'🧭'},{x:450,t:'تاریخ دان',e:'🏺'},{x:700,t:'ٹیکسلا کا استاد',e:'🎓'}];
+const level=()=>{let l=0;LV.forEach((v,i)=>{if(S.xp>=v.x)l=i});return l};
+function hud(){const l=level(),cur=LV[l],nx=LV[l+1];$('#nm').textContent=S.name||'طالب علم';$('#xp').textContent=ur(S.xp);$('#lvl').textContent=cur.e+' '+cur.t;
+ const pct=nx?Math.min(100,(S.xp-cur.x)/(nx.x-cur.x)*100):100;$('#xpf').style.width=pct+'%';$('#snd').textContent=S.sound?'🔊':'🔇'}
+function xp(n,fromEl){const old=level();S.xp+=n;save();hud();
+ const r=fromEl&&fromEl.getBoundingClientRect?fromEl.getBoundingClientRect():null;const f=h('<div class="xpf">+'+ur(n)+' ⭐</div>');
+ f.style.left=(r?r.left+r.width/2:innerWidth/2)+'px';f.style.top=(r?r.top:innerHeight/2)+'px';document.body.append(f);setTimeout(()=>f.remove(),1300);
+ if(level()>old){confetti(160);sfx('win');toast('🎉 نئی سطح: <b>'+LV[level()].e+' '+LV[level()].t+'</b>');say('واہ! تم '+LV[level()].t+' بن گئے!')}}
+const BADGES=[
+ {id:'words',e:'🔤',t:'لفظوں کا ماہر',d:'سارے الفاظ کے کارڈ پلٹو'},
+ {id:'match',e:'🧩',t:'جوڑی ساز',d:'جوڑی ملاؤ کھیل جیتو'},
+ {id:'paras',e:'📖',t:'پیراگراف شیر',d:'سارے پیراگراف کے سوال حل کرو'},
+ {id:'central',e:'💡',t:'مرکزی خیال کا رکھوالا',d:'مرکزی خیال مکمل کرو'},
+ {id:'summary',e:'📝',t:'خلاصہ نویس',d:'خلاصہ درست مکمل کرو'},
+ {id:'riddle',e:'🕵️',t:'کون ہوں میں؟ چیمپئن',d:'سارے معمّے حل کرو'},
+ {id:'tf',e:'⚖️',t:'سچ کا سپاہی',d:'سچ جھوٹ میں ۸ یا زیادہ درست'},
+ {id:'time',e:'🕰️',t:'ٹائم مسافر',d:'پوری ٹائم لائن بناؤ'},
+ {id:'grad',e:'🎓',t:'ٹیکسلا گریجویٹ',d:'امتحان میں ۸ یا زیادہ نمبر'}];
+function award(id){if(S.badges[id])return;S.badges[id]=1;save();const b=BADGES.find(x=>x.id===id);setTimeout(()=>{sfx('win');confetti(170);toast('🏅 نیا انعام: <b>'+b.e+' '+b.t+'</b>');say('مبارک ہو! تم نے «'+b.t+'» کا انعام جیت لیا!',5000);xp(25)},500);buildNav()}
+
+/* ====================== مواد: الفاظ ====================== */
+const WORDS=[
+ {w:'داغ بیل ڈالنا',m:'بنیاد رکھنا، شروعات کرنا',x:'اس نے نئے اسکول کی داغ بیل ڈالی۔',e:'🏗️',k:['داغ بیل']},
+ {w:'جغرافیائی',m:'زمین اور مقام سے تعلق رکھنے والا',x:'پاکستان کی جغرافیائی اہمیت بہت ہے۔',e:'🗺️',k:['جغرافیائی']},
+ {w:'شہادتیں',m:'ثبوت، گواہیاں',x:'تاریخی شہادتوں سے سچ معلوم ہوا۔',e:'🔍',k:['شہادتوں']},
+ {w:'باضابطہ',m:'قاعدے اور اصول کے مطابق',x:'باضابطہ کلاسیں آج سے شروع ہیں۔',e:'📏',k:['باضابطہ','باقاعدہ']},
+ {w:'سند',m:'تعلیم مکمل ہونے کا تحریری ثبوت',x:'اسے ڈگری کی سند مل گئی۔',e:'📜',k:['سند']},
+ {w:'محققین',m:'تحقیق کرنے والے لوگ',x:'محققین نے پرانے شہر کی تحقیق کی۔',e:'🧑‍🔬',k:['محققین']},
+ {w:'روایت',m:'سنی سنائی پرانی بات یا پرانا طریقہ',x:'عید پر ملنا ہماری اچھی روایت ہے۔',e:'🗣️',k:['روایت']},
+ {w:'دارالحکومت',m:'وہ شہر جہاں سے حکومت چلائی جائے',x:'اسلام آباد پاکستان کا دارالحکومت ہے۔',e:'🏛️',k:['دارالحکومت']},
+ {w:'نوادرات',m:'پرانی اور قیمتی چیزیں',x:'عجائب گھر میں نوادرات رکھے ہیں۔',e:'🏺',k:['نوادرات']},
+ {w:'تہذیب',m:'کسی قوم کے رہنے سہنے کا طریقہ',x:'گندھارا ایک قدیم تہذیب تھی۔',e:'🎎',k:['تہذیب']},
+ {w:'قبضہ',m:'زبردستی کسی علاقے کو اپنے اختیار میں لینا',x:'فوج نے قلعے پر قبضہ کر لیا۔',e:'🚩',k:['قبضہ']},
+ {w:'شکست',m:'ہار',x:'دشمن کو شکست ہو گئی۔',e:'🏳️',k:['شکست']},
+ {w:'نفیس',m:'عمدہ، صاف ستھرا اور خوب صورت',x:'اس نے نفیس لباس پہنا تھا۔',e:'✨',k:['نفیس']},
+ {w:'فارغ التحصیل',m:'جس نے تعلیم مکمل کر لی ہو',x:'وہ اس سال فارغ التحصیل ہوا۔',e:'🎓',k:['فارغ التحصیل']},
+ {w:'اثر و نفوذ',m:'اثر کا دور تک پھیل جانا',x:'اس کے علم کا اثر و نفوذ دور تک تھا۔',e:'🌊',k:['اثر و نفوذ']},
+ {w:'توسط',m:'ذریعہ، وسیلہ',x:'دوست کے توسط سے ملاقات ہوئی۔',e:'🔗',k:['توسط']},
+ {w:'قیام',m:'ٹھہرنا، رہنا',x:'سیاح نے ایک ہفتہ قیام کیا۔',e:'🏕️',k:['قیام']},
+ {w:'باقیات',m:'بچی ہوئی چیزیں، کھنڈرات',x:'پرانے شہر کی باقیات ملیں۔',e:'🧱',k:['باقیات']},
+ {w:'سپہ سالار',m:'فوج کا سب سے بڑا افسر',x:'سپہ سالار نے فوج کو حکم دیا۔',e:'⚔️',k:['سپہ سالار']},
+ {w:'راج دھانی',m:'دارالحکومت (ہندی لفظ)',x:'پاٹلی پتر موریا خاندان کی راج دھانی تھی۔',e:'👑',k:['راج دھانی']}
+];
+WORDS.forEach((w,i)=>w.i=i);
+const COLS=[['#ff8a3d','#e2703a'],['#3f9bff','#1e6fcc'],['#8cc63f','#4f9a1d'],['#e84a7f','#b72a5c'],['#6c4bd6','#4328a8'],['#1aa6a6','#0c7474']];
+const KWMAP={};WORDS.forEach(w=>w.k.forEach(k=>KWMAP[k]=w.i));
+const KWRE=new RegExp(Object.keys(KWMAP).sort((a,b)=>b.length-a.length).join('|'),'g');
+const hl=t=>esc(t).replace(KWRE,m=>'<span class="kw" data-i="'+KWMAP[m]+'">'+m+'</span>');
+
+/* ====================== مواد: پیراگراف ====================== */
+const PARAS=[
+ {t:'دنیا کی سب سے پرانی یونیورسٹی',e:'🏛️',text:'پاکستان کے ضلع راولپنڈی میں، شیر شاہ سوری کی بنائی ہوئی گرینڈ ٹرنک روڈ کے قریب ایک بہت پرانی یونیورسٹی کی داغ بیل ڈالی گئی۔ آج تک کی معلومات کے مطابق یہ دنیا کی سب سے پرانی یونیورسٹی ہے۔ یہ حضرت عیسیٰ کی پیدائش سے تقریباً ۶۰۰ سال پہلے بنائی گئی تھی۔',gist:'ٹیکسلا یونیورسٹی دنیا کی سب سے پرانی یونیورسٹی ہے جو تقریباً ۶۰۰ سال قبل مسیح میں بنی۔',q:'یہ یونیورسٹی حضرت عیسیٰ کی پیدائش سے تقریباً کتنے سال پہلے بنی؟',o:['۶۰۰ سال','۱۰۰ سال','۱۸۶۳ سال','۳۲۶ سال'],hint:'پیراگراف کے آخری جملے میں دیکھو۔'},
+ {t:'دنیا کی پہلی باقاعدہ یونیورسٹی',e:'🎓',text:'اس علاقے کی جغرافیائی اہمیت کی وجہ سے یہاں ہر دور میں جنگیں ہوتی رہیں اور مختلف حکمران قبضہ کرتے رہے۔ تاریخی شہادتوں سے پتا چلتا ہے کہ اسی علاقے میں پہلے پڑھائی شروع ہوئی، پھر باقاعدہ تعلیمی نظام بنا اور سند (سرٹیفکیٹ، ڈگری، ڈپلومہ) دی جانے لگی۔ محققین کا خیال ہے کہ دوسری جگہوں پر پڑھائی تو ہوتی تھی، مگر پڑھنے کے کمرے، لائبریری، طلبہ کے رہنے کی جگہ اور تعلیم کے بعد سند دینے کی روایت نہیں تھی۔ اسی لیے ٹیکسلا کو دنیا کی پہلی باقاعدہ یونیورسٹی کہا جاتا ہے۔',gist:'ٹیکسلا میں کمرے، لائبریری، رہائش اور سند کا نظام تھا، اس لیے یہ پہلی باقاعدہ یونیورسٹی کہلاتی ہے۔',q:'ٹیکسلا کو پہلی باقاعدہ یونیورسٹی کیوں کہا جاتا ہے؟',o:['یہاں کمرے، لائبریری، رہائش اور سند دینے کا نظام تھا۔','یہاں صرف بادشاہ پڑھتے تھے۔','یہ سمندر کے کنارے بنی تھی۔','یہاں کوئی استاد نہیں تھا۔'],hint:'یہ سوچو کہ ایک اچھی یونیورسٹی میں کیا کیا ہوتا ہے۔'},
+ {t:'ٹیکسلا کا نام کیسے پڑا؟',e:'📜',text:'قدیم ہندوستان کی تاریخ کے مطابق ٹیکسلا کا نام ٹاکسا کے نام پر رکھا گیا۔ ٹاکسا نے ٹاکسا کھنڈا کے علاقے پر حکومت کی اور ٹیکسلا شہر کی بنیاد رکھی۔ یہ بھی روایت ہے کہ مہابھارت کی کہانی پہلی بار ٹیکسلا ہی میں پڑھائی گئی تھی۔',gist:'ٹیکسلا کا نام ٹاکسا کے نام پر پڑا جس نے اس شہر کی بنیاد رکھی۔',q:'روایت کے مطابق ٹیکسلا کا نام کس کے نام پر پڑا؟',o:['ٹاکسا','اشوک','سکندر اعظم','چانکیہ'],hint:'دونوں ناموں میں «ٹا» اور «کس» کی آواز ملتی ہے!'},
+ {t:'پرانی کتابوں اور سیاحوں کی گواہی',e:'🧳',text:'بدھ مذہب کی پرانی کتابوں میں بھی ٹیکسلا کا ذکر ملتا ہے۔ پانچویں صدی میں سری لنکا میں لکھی گئی ایک کتاب بتاتی ہے کہ یہاں تعلیم و تدریس کا انتظام تھا اور عالم مختلف مضامین پڑھاتے تھے۔ ٹیکسلا گندھارا تہذیب کا دارالحکومت تھا اور دور دور سے لوگ تعلیم حاصل کرنے آتے تھے۔ چین کے دو قدیم سیاح فاکسین اور ہوانگ سانگ نے بھی یہاں قیام کیا اور اپنے سفرناموں میں ٹیکسلا کا حال لکھا۔',gist:'ٹیکسلا گندھارا تہذیب کا دارالحکومت تھا اور کتابوں اور چینی سیاحوں کے سفرناموں میں اس کا ذکر ملتا ہے۔',q:'ٹیکسلا کس تہذیب کا دارالحکومت تھا؟',o:['گندھارا','مصری','رومی','چینی'],hint:'تیسرے جملے کو غور سے پڑھو۔'},
+ {t:'حکمران اور فاتحین',e:'⚔️',text:'ٹیکسلا کے نوادرات کی کاربن ڈیٹنگ سے پتا چلا کہ حضرت عیسیٰ سے تین ہزار سال پہلے بھی یہاں انسانی تہذیبیں پروان چڑھ رہی تھیں۔ کہا جاتا ہے کہ ایران کے بادشاہ سائرس اعظم نے بھی اس علاقے پر قبضہ کیا۔ ۳۲۶ قبل مسیح میں سکندر اعظم نے مقامی حکمرانوں کو شکست دے کر ٹیکسلا پر قبضہ کر لیا۔ ایک یونانی تاریخ دان نے ٹیکسلا کو نفیس اور اپنے وقت کا بہترین شہر قرار دیا۔',gist:'ٹیکسلا بہت پرانا شہر ہے؛ سائرس اور سکندر اعظم جیسے حکمرانوں نے یہاں قبضہ کیا۔',q:'سکندر اعظم نے ٹیکسلا پر کب قبضہ کیا؟',o:['۳۲۶ قبل مسیح','۹۰ قبل مسیح','۴۶ عیسوی','۱۸۶۳ عیسوی'],hint:'اس کا سن «۳» سے شروع ہوتا ہے اور «قبل مسیح» ہے۔'},
+ {t:'موریا خاندان کا سنہری دور',e:'👑',text:'شہنشاہ چندر گپت موریا نے اپنے دورِ حکومت میں ٹیکسلا کو صوبے کا دارالحکومت بنایا۔ اس کے پوتے اشوک کے دور میں ٹیکسلا کو صحیح معنوں میں تعلیمی مرکز کی حیثیت حاصل ہوئی۔ اشوک نے ٹیکسلا سے اپنی راج دھانی پاٹلی پتر (آج کے پٹنہ) تک سڑک بھی بنوائی۔ موریا خاندان کی حکومت ختم ہوئی تو یونان کے حکمرانوں نے ٹیکسلا کو فتح کر کے اپنی حکومت میں لے لیا۔',gist:'اشوک کے دور میں ٹیکسلا ایک بڑا تعلیمی مرکز بنا اور اس نے پاٹلی پتر تک سڑک بنوائی۔',q:'کس بادشاہ کے دور میں ٹیکسلا صحیح معنوں میں تعلیمی مرکز بنا؟',o:['اشوک','سکندر اعظم','سائرس اعظم','شاہ پور دوئم'],hint:'وہ چندر گپت موریا کا پوتا تھا۔'},
+ {t:'حملے، زوال اور دوبارہ دریافت',e:'🔦',text:'موریا خاندان کے بعد ٹیکسلا پر یونانی، پارتھین اور کشن حکمرانوں کی حکومت رہی۔ سینٹ تھامس نے ۴۶ عیسوی میں ٹیکسلا کا دورہ کیا۔ چوتھی صدی میں ساسانی بادشاہ شاہ پور دوئم نے قبضہ کر لیا اور ساسانیوں نے بدھ عبادت گاہوں اور درس گاہوں کو تباہ کر دیا۔ یونیورسٹی کو شدید نقصان پہنچا اور وہ دوبارہ اپنے پیروں پر کھڑی نہ ہو سکی۔ ۱۸۶۳ء میں الیگزینڈر کننگھم نے ٹیکسلا دریافت کیا اور دنیا کو پہلی بار اس تہذیب کی باقیات دیکھنے کا موقع ملا۔',gist:'ساسانیوں نے ٹیکسلا کو تباہ کیا، پھر ۱۸۶۳ء میں کننگھم نے اسے دوبارہ دریافت کیا۔',q:'۱۸۶۳ء میں ٹیکسلا کو کس نے دریافت کیا؟',o:['الیگزینڈر کننگھم','سکندر اعظم','ہوانگ سانگ','اشوک'],hint:'پیراگراف کے آخری جملے میں نام ہے۔'},
+ {t:'ٹیکسلا میں پڑھائی کیسی تھی؟',e:'📚',text:'یہاں طلبہ کا داخلہ سولہ سال کی عمر میں ہوتا تھا۔ جانوروں کو سدھانے سے لے کر طب، قانون، فلسفہ، زراعت، جنگ اور فنِ تعمیر کی تعلیم و تربیت دی جاتی تھی۔ ٹیکسلا یونیورسٹی اور موہنجو داڑو کے تعلیمی ادارے کے درمیان تعلقات تھے۔ ہندوستان اور دنیا کے دور دراز علاقوں سے طلبہ یہاں علم حاصل کرنے آتے تھے۔ ان کے رہنے کے انتظامات تھے اور اساتذہ کی قیام گاہیں بھی قریب تھیں۔ پڑھائی کے اوقات اساتذہ خود مقرر کرتے تھے۔',gist:'سولہ سال کی عمر میں داخلہ ہوتا تھا اور بہت سے علوم پڑھائے جاتے تھے؛ طلبہ کے رہنے کا انتظام بھی تھا۔',q:'ٹیکسلا میں طلبہ کا داخلہ کتنی عمر میں ہوتا تھا؟',o:['سولہ سال','پانچ سال','اکیس سال','بارہ سال'],hint:'پہلے جملے میں جواب موجود ہے۔'},
+ {t:'علم کا مرکز اور مشہور طلبہ',e:'🌟',text:'اس زمانے میں ٹیکسلا علم و دانش کا عظیم مرکز بن گیا تھا اور اس کا اثر و نفوذ دور دور تک تھا۔ یہاں کی تہذیب کا اثر ہندی اور سنسکرت زبان پر ہوا۔ فارغ التحصیل ہونے کے بعد طلبہ اپنے مضمون کے ماہر کہلاتے اور انہیں اُستاد کا درجہ دیا جاتا تھا۔ ٹیکسلا کے مشہور طلبہ میں چندر گپت موریا کے مشیر چانکیہ، آیورویدک علاج کے ماہر چرکا، سنسکرت زبان و گرامر کے ماہر پانینی اور گوتم بدھ کے مشہور معالج یاسان جت شامل ہیں۔',gist:'ٹیکسلا علم کا عظیم مرکز تھا جہاں سے چانکیہ، چرکا اور پانینی جیسے ماہر نکلے۔',q:'پانینی کس چیز کے ماہر تھے؟',o:['سنسکرت زبان اور گرامر','علمِ طب','جنگی چالیں','کھیتی باڑی'],hint:'آخری جملے میں «پانینی» کے ساتھ دیکھو۔'}
+];
+
+/* ====================== مواد: ٹائم لائن ====================== */
+const STAGE_NAMES={1:'پہلا مرحلہ: آغاز',2:'دوسرا مرحلہ: موریا سے کشن تک',3:'تیسرا مرحلہ: زوال اور دریافت'};
+const EV=[
+ {id:1,s:1,y:'۳۰۰۰ ق م',t:'قدیم انسانی تہذیبیں',e:'🌾',c:['#f6b24b','#c9702a'],d:'ٹیکسلا کے نوادرات کی کاربن ڈیٹنگ سے پتا چلا کہ حضرت عیسیٰ کی پیدائش سے تین ہزار سال پہلے بھی اس علاقے میں مختلف تہذیبیں پروان چڑھ رہی تھیں۔'},
+ {id:2,s:1,y:'۶۰۰ ق م',t:'یونیورسٹی کی بنیاد',e:'🏛️',c:['#8cc63f','#3f8a1d'],d:'راولپنڈی کے قریب ٹیکسلا یونیورسٹی کی داغ بیل ڈالی گئی۔ یہ دنیا کی سب سے پرانی اور پہلی باقاعدہ یونیورسٹی مانی جاتی ہے۔'},
+ {id:3,s:1,y:'۳۲۶ ق م',t:'سکندر اعظم کی آمد',e:'⚔️',c:['#e84a7f','#a8265a'],d:'سکندر اعظم نے مقامی حکمرانوں کو شکست دے کر ٹیکسلا پر قبضہ کر لیا۔ ایک یونانی تاریخ دان نے اسے نفیس اور اپنے وقت کا بہترین شہر قرار دیا۔'},
+ {id:4,s:1,y:'موریا دور',t:'چندر گپت موریا',e:'👑',c:['#6c4bd6','#3e2899'],d:'شہنشاہ چندر گپت موریا نے ٹیکسلا کو اپنے صوبے کا دارالحکومت بنایا۔ ٹیکسلا کے شاگرد چانکیہ اس کے مشیر تھے۔'},
+ {id:5,s:2,y:'موریا دور',t:'اشوک اور تعلیمی مرکز',e:'🛣️',c:['#1aa6a6','#0c6f6f'],d:'چندر گپت کے پوتے اشوک کے دور میں ٹیکسلا صحیح معنوں میں تعلیمی مرکز بنا۔ اشوک نے ٹیکسلا سے پاٹلی پتر (آج کے پٹنہ) تک سڑک بنوائی۔'},
+ {id:6,s:2,y:'موریا کے بعد',t:'یونانی حکمرانوں کی فتح',e:'🏺',c:['#3f9bff','#1e5fb8'],d:'موریا خاندان کا آخری حکمران اپنے سپہ سالار کے ہاتھوں مارا گیا۔ اس کے بعد یونان کے حکمرانوں نے ٹیکسلا کو فتح کر کے اپنی حکومت میں لے لیا۔'},
+ {id:7,s:2,y:'۹۰ ق م',t:'پارتھین دور کا آغاز',e:'🏹',c:['#f08a3d','#b3501a'],d:'۹۰ قبل مسیح میں یونانی دور کا خاتمہ ہوا اور پارتھین دور شروع ہوا۔'},
+ {id:8,s:2,y:'۴۶ ع',t:'سینٹ تھامس کا دورہ',e:'✝️',c:['#e2703a','#a9461b'],d:'عیسائیوں کے مذہبی رہنما سینٹ تھامس نے ۴۶ عیسوی میں ٹیکسلا کا دورہ کیا۔'},
+ {id:9,s:2,y:'۷۶ ع',t:'کشن بادشاہ کی فتح',e:'🦅',c:['#8cc63f','#3a7a12'],d:'کشن بادشاہ نے پارتھین دور کا خاتمہ کیا۔ اس کے بعد ایک طویل عرصے تک امن و امان رہا۔'},
+ {id:10,s:3,y:'چوتھی صدی ع',t:'شاہ پور دوئم کا قبضہ',e:'🛡️',c:['#6c4bd6','#3e2899'],d:'چوتھی صدی میں ساسانی بادشاہ شاہ پور دوئم نے ٹیکسلا پر قبضہ کر لیا۔'},
+ {id:11,s:3,y:'۴۰۵ ع',t:'چینی سیاح فاکسین',e:'🧳',c:['#f6b24b','#c9702a'],d:'چین کے سیاح فاکسین نے ٹیکسلا میں قیام کیا اور اپنے سفرنامے میں اس کا تفصیل سے ذکر کیا۔'},
+ {id:12,s:3,y:'۴۶۰ ع کے لگ بھگ',t:'یونیورسٹی کی تباہی',e:'💔',c:['#8a8a99','#4a4a58'],d:'ساسانیوں نے بدھ عبادت گاہوں اور درس گاہوں کو تباہ کر دیا۔ یونیورسٹی کو شدید نقصان پہنچا اور وہ دوبارہ اپنے پیروں پر کھڑی نہ ہو سکی۔'},
+ {id:13,s:3,y:'۶۰۳ ع',t:'چینی سیاح ہوانگ سانگ',e:'🗺️',c:['#1aa6a6','#0c6f6f'],d:'چین کے دوسرے سیاح ہوانگ سانگ نے بھی ٹیکسلا میں قیام کیا۔ ان دونوں سیاحوں کے ذریعے اس زمانے کے ٹیکسلا کی بہت سی معلومات سامنے آتی ہیں۔'},
+ {id:14,s:3,y:'۱۸۶۳ ع',t:'کننگھم کی دریافت',e:'🔦',c:['#ffb703','#d17a00'],d:'الیگزینڈر کننگھم نے ٹیکسلا دریافت کیا اور دنیا کو پہلی بار اس تہذیب کی باقیات دیکھنے کا موقع ملا۔'}
+];
+const STICKERS=['🏛️','📜','⚔️','👑','🌟','🧳','🏺','🔦'];
+
+/* ====================== ٹیبز اور حصے ====================== */
+const SECS=[['home','🏠','آغاز'],['paras','📖','پیراگراف'],['words','🔤','الفاظ و معانی'],['central','💡','مرکزی خیال'],['summary','📝','خلاصہ'],['games','🎮','کھیل'],['timeline','🕰️','ٹائم لائن'],['trophy','🏆','انعامات و امتحان']];
+const stDone=()=>({paras:Object.keys(S.paras).length>=PARAS.length,words:Object.keys(S.words).length>=WORDS.length&&S.match>0,central:!!S.central.done,summary:!!S.summary,games:S.riddles>0&&S.tf>0&&S.subjects>0,timeline:EV.every(e=>S.tlPlaced[e.id]),trophy:S.quiz>=6});
+function buildNav(){const d=stDone();$('#tabs').innerHTML=SECS.map(s=>'<button class="tab '+(cur===s[0]?'active':'')+'" data-go="'+s[0]+'">'+(d[s[0]]?'<span class="dn">✅</span>':'')+s[1]+' '+s[2]+'</button>').join('')}
+let cur='home';
+function go(id){cur=id;$$('.sec').forEach(s=>s.classList.toggle('active',s.id===id));if(id==='home')renderHome();buildNav();scrollTo({top:0,behavior:'smooth'});const t=$('.tab.active');if(t&&t.scrollIntoView)t.scrollIntoView({inline:'center',block:'nearest'});
+ const hi={paras:'ہر پیراگراف کھولو۔ جامنی لفظ پر ٹیپ کرو تو معنی ملیں گے!',words:'کارڈ پر ٹیپ کرو، وہ پلٹ جائے گا۔',central:'سبق کی سب سے اہم بات کون سی ہے؟',summary:'کہانی کے ورق پلٹو اور پھر خالی جگہیں بھرو۔',games:'کھیل کھیل میں سیکھو!',timeline:'تاریخ کا سفر! پہلے ٹائم مشین، پھر خود ٹائم لائن بناؤ۔',trophy:'تمہاری محنت کے انعامات اور آخری امتحان!'}[id];if(hi)say(hi,3800)}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){sfx('tap');go(g.dataset.go)}
+ const k=e.target.closest('.kw');const tip=$('#tip');
+ if(k){const w=WORDS[+k.dataset.i];tip.innerHTML='<b>'+w.w+'</b><br>'+w.m;tip.style.display='block';const r=k.getBoundingClientRect();tip.style.top=Math.min(innerHeight-120,r.bottom+8)+'px';const L=Math.max(8,Math.min(innerWidth-tip.offsetWidth-8,r.left+r.width/2-tip.offsetWidth/2));tip.style.left=L+'px';sfx('tap');e.stopPropagation();return}
+ tip.style.display='none'});
+addEventListener('scroll',()=>{$('#tip').style.display='none'},{passive:true});
+SECS.forEach(s=>{const sec=document.createElement('section');sec.className='sec'+(s[0]==='home'?' active':'');sec.id=s[0];$('#main').append(sec)});
+const nextBtn=(to,label)=>'<div class="nextwrap"><button class="btn green" data-go="'+to+'">'+label+' ➜</button></div>';
+
+/* ====================== MCQ ====================== */
+function mcq(o){const w=h('<div class="mcq"><div class="q">❓ '+o.q+'</div><div class="opts"></div><div class="fb"></div></div>');const box=$('.opts',w),fb=$('.fb',w);let tries=0,over=false;
+ shuffle(o.o.map((t,i)=>({t:t,ok:i===0}))).forEach(op=>{const b=h('<button class="opt">'+op.t+'</button>');
+  b.onclick=()=>{if(over||b.disabled)return;
+   if(op.ok){over=true;b.classList.add('ok');$$('.opt',w).forEach(x=>x.disabled=true);fb.textContent='🎉 شاباش! بالکل درست۔';sfx('ok');if(o.done)o.done(tries===0,b)}
+   else{tries++;b.classList.add('bad');b.disabled=true;fb.textContent='🤔 دوبارہ سوچو۔'+(o.hint?' اشارہ: '+o.hint:'');sfx('bad');shake(b)}};
+  box.append(b)});return w}
+
+/* ====================== آغاز ====================== */
+const HERO=`<svg viewBox="0 0 800 300" role="img" aria-label="ٹیکسلا یونیورسٹی کا منظر">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc8ff"/><stop offset=".7" stop-color="#ffe9b0"/><stop offset="1" stop-color="#ffd9a0"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe27a"/><stop offset="1" stop-color="#ff9f1c"/></linearGradient></defs>
+<rect width="800" height="300" fill="url(#sky)"/>
+<g class="sun"><g stroke="#ffd23f" stroke-width="5" stroke-linecap="round"><path d="M640 14v-12M640 126v12M584 70h-12M696 70h12M600 30l-9-9M680 110l9 9M680 30l9-9M600 110l-9 9"/></g></g>
+<circle cx="640" cy="70" r="38" fill="#ffd23f"/><circle cx="640" cy="70" r="30" fill="#ffe680"/>
+<g class="cl1" fill="#fff" opacity=".92"><ellipse cx="160" cy="62" rx="48" ry="16"/><ellipse cx="195" cy="50" rx="34" ry="16"/><ellipse cx="130" cy="52" rx="28" ry="13"/></g>
+<g class="cl2" fill="#fff" opacity=".85"><ellipse cx="420" cy="38" rx="40" ry="13"/><ellipse cx="450" cy="30" rx="28" ry="12"/></g>
+<g class="bird" fill="none" stroke="#3a3a48" stroke-width="2.5" stroke-linecap="round"><path d="M60 110q6-9 12 0q6-9 12 0"/><path d="M100 96q5-8 10 0q5-8 10 0"/></g>
+<path d="M0 205 L90 140 L170 190 L270 120 L370 195 L470 135 L570 200 L680 128 L800 195 V300 H0Z" fill="#a9c7a6"/>
+<path d="M0 232 Q140 190 300 222 T620 214 T800 226 V300 H0Z" fill="#86c25f"/>
+<!-- ستوپا بائیں -->
+<g><ellipse cx="120" cy="252" rx="78" ry="8" fill="#0000001a"/><rect x="60" y="238" width="120" height="14" rx="3" fill="#d9b77a"/><path d="M66 238 A54 54 0 0 1 174 238Z" fill="#f6e3b4" stroke="#caa56a" stroke-width="2"/><rect x="108" y="170" width="24" height="12" fill="#e9cf96" stroke="#caa56a"/><polygon points="120,138 113,170 127,170" fill="#e2703a"/><path d="M120 138v-16" stroke="#6b4a1f" stroke-width="2"/><path d="M120 122l16 5-16 5z" fill="#e84a7f"/></g>
+<!-- ستوپا دائیں -->
+<g><ellipse cx="690" cy="250" rx="58" ry="7" fill="#0000001a"/><rect x="646" y="238" width="88" height="12" rx="3" fill="#d9b77a"/><path d="M652 238 A38 38 0 0 1 728 238Z" fill="#f6e3b4" stroke="#caa56a" stroke-width="2"/><rect x="681" y="190" width="18" height="10" fill="#e9cf96" stroke="#caa56a"/><polygon points="690,166 684,190 696,190" fill="#e2703a"/></g>
+<!-- مرکزی عمارت -->
+<g><ellipse cx="400" cy="256" rx="190" ry="9" fill="#0000001f"/>
+<rect x="228" y="236" width="344" height="18" rx="3" fill="#d9b77a"/><rect x="248" y="220" width="304" height="16" rx="3" fill="#e6c78c"/>
+<g fill="#fff1cf" stroke="#caa56a" stroke-width="2"><rect x="268" y="134" width="22" height="86"/><rect x="320" y="134" width="22" height="86"/><rect x="372" y="134" width="22" height="86"/><rect x="406" y="134" width="22" height="86"/><rect x="458" y="134" width="22" height="86"/><rect x="510" y="134" width="22" height="86"/></g>
+<rect x="254" y="116" width="292" height="18" fill="#f2d9a0" stroke="#caa56a" stroke-width="2"/>
+<polygon points="248,116 400,64 552,116" fill="#f7e3b5" stroke="#caa56a" stroke-width="2"/>
+<circle cx="400" cy="96" r="12" fill="#e2703a"/><path d="M393 96h14M400 89v14" stroke="#fff" stroke-width="2.5"/>
+<path d="M376 220 V176 a24 24 0 0 1 48 0 V220Z" fill="#7a4a22"/><circle cx="414" cy="200" r="2.5" fill="#ffd23f"/></g>
+<!-- درخت -->
+<g><rect x="248" y="226" width="6" height="22" fill="#7a4a22"/><circle cx="251" cy="216" r="16" fill="#4f9a1d"/><rect x="560" y="228" width="6" height="22" fill="#7a4a22"/><circle cx="563" cy="218" r="14" fill="#5aa826"/><rect x="30" y="236" width="6" height="22" fill="#7a4a22"/><circle cx="33" cy="226" r="15" fill="#5aa826"/></g>
+<!-- سڑک -->
+<polygon points="300,300 500,300 414,254 386,254" fill="#5b5b66"/><path d="M400 298 L400 258" stroke="#fff" stroke-width="3" stroke-dasharray="8 7"/>
+<!-- طلبہ -->
+<g class="walker"><g transform="translate(0,262)"><circle cx="0" cy="0" r="7" fill="#f2c9a0"/><rect x="-6" y="7" width="12" height="18" rx="5" fill="#e84a7f"/><rect x="9" y="-2" width="8" height="8" fill="#fff" stroke="#6b4a1f"/></g>
+<g transform="translate(34,266)"><circle cx="0" cy="0" r="7" fill="#e0b080"/><rect x="-6" y="7" width="12" height="18" rx="5" fill="#3f9bff"/></g></g>
+</svg>`;
+const FACTS=['🎒 ٹیکسلا یونیورسٹی میں داخلے کی عمر سولہ سال تھی!','🐘 یہاں جانوروں کو سدھانا بھی سکھایا جاتا تھا۔','📜 کہا جاتا ہے کہ سند (ڈگری، سرٹیفکیٹ) دینے کی روایت سب سے پہلے یہاں ہوئی۔','🧠 چانکیہ، پانینی اور چرکا اسی یونیورسٹی کے شاگرد تھے۔','🔦 ٹیکسلا کو ۱۸۶۳ء میں الیگزینڈر کننگھم نے دریافت کیا۔','🛣️ اشوک نے ٹیکسلا سے پاٹلی پتر (پٹنہ) تک سڑک بنوائی۔','🧳 چین کے دو سیاح فاکسین اور ہوانگ سانگ ٹیکسلا آئے۔','⏳ ٹیکسلا کی تہذیب حضرت عیسیٰ سے تین ہزار سال پہلے بھی موجود تھی!'];
+let factI=0;
+function renderHome(){const d=stDone();const ids=['paras','words','central','summary','games','timeline','trophy'];const pct=Math.round(ids.filter(i=>d[i]).length/ids.length*100);
+ const pal=['#e2703a','#3f9bff','#8cc63f','#e84a7f','#6c4bd6','#1aa6a6','#f7b500'];
+ $('#home').innerHTML='<div class="card hero">'+HERO+'<div class="hero-t"><div class="ribbon">ٹیکسلا یونیورسٹی</div><div class="sub">۶۰۰ قبل مسیح • ڈاکٹر شیر شاہ سیّد</div><h2 style="color:#2b2a33;font-size:1.4em;margin:6px 0 0">دنیا کی سب سے پرانی یونیورسٹی کا سفر! 🚀</h2><p style="margin:2px 0">'+esc(S.name||'دوست')+'، کیا تم ہزاروں سال پیچھے جانے کے لیے تیار ہو؟</p><button class="btn gold" data-go="paras" style="font-size:1.2em">▶ سفر شروع کرو</button></div></div>'+
+ '<div class="card"><div class="row"><div class="ring" style="--p:'+pct+'"><b>'+ur(pct)+'٪</b></div><div style="flex:1;min-width:200px"><h2>🗺️ تمہارا سفری نقشہ</h2><div>ہر منزل پر جاؤ، ستارے جیتو اور انعام کماؤ۔ ✅ کا نشان بتاتا ہے کہ منزل مکمل ہو گئی۔</div></div></div>'+
+ '<div class="map">'+ids.map((id,i)=>{const s=SECS.find(x=>x[0]===id);return '<button class="stn '+(d[id]?'ok':'')+'" data-go="'+id+'" style="background:'+pal[i]+'"><span class="em">'+s[1]+'</span>'+ur(i+1)+'۔ '+s[2]+'</button>'}).join('')+'</div></div>'+
+ '<div class="card"><h2>🤩 کیا تم جانتے ہو؟</h2><div class="fact" id="fact">'+FACTS[factI]+'</div><div class="center"><button class="btn teal" id="nextFact">🎲 نیا حیرت انگیز واقعہ</button></div></div>'+
+ '<div class="card"><h3>📌 سبق کا تعارف</h3><p style="margin:0">اس سبق میں ہم پڑھیں گے کہ ٹیکسلا یونیورسٹی کہاں تھی، کب بنی، وہاں کیا پڑھایا جاتا تھا، کون کون سے بادشاہ آئے، اور یہ عظیم یونیورسٹی کیسے ختم ہوئی۔ آخر میں تم خود پوری تاریخ کی <b>ٹائم لائن</b> بناؤ گے!</p></div>';
+ $('#nextFact').onclick=()=>{factI=(factI+1)%FACTS.length;const f=$('#fact');f.textContent=FACTS[factI];f.classList.remove('grow');void f.offsetWidth;f.classList.add('grow');sfx('tap')}}
+
+/* ====================== پیراگراف ====================== */
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);const v=speechSynthesis.getVoices();const uv=v.find(x=>/^ur/i.test(x.lang))||v.find(x=>/^hi/i.test(x.lang));if(uv){u.voice=uv;u.lang=uv.lang}else u.lang='ur-PK';u.rate=.85;speechSynthesis.speak(u)}catch(e){say('اس آلے میں آواز نہیں چل سکی۔')}}
+function renderParas(){const sec=$('#paras');
+ sec.innerHTML='<div class="banner">📖 پیراگراف بہ پیراگراف سیر</div><div class="card"><div class="hint">👆 ہر پیراگراف کھولو، <span class="kw" style="cursor:default">جامنی رنگ</span> کے لفظ پر ٹیپ کر کے معنی دیکھو، پھر سوال حل کرو۔ پہلی کوشش میں درست جواب پر زیادہ ستارے ملیں گے!</div><div class="bar"><i id="pbar"></i></div><div id="pcount" class="sub"></div></div><div id="plist"></div>'+nextBtn('words','اگلی منزل: الفاظ و معانی');
+ const list=$('#plist');
+ const upd=()=>{const n=Object.keys(S.paras).length;$('#pbar').style.width=n/PARAS.length*100+'%';$('#pcount').textContent='مکمل پیراگراف: '+ur(n)+' / '+ur(PARAS.length)};
+ PARAS.forEach((p,i)=>{const done=S.paras[i];
+  const c=h('<div class="pcard"><button class="phead"><span class="pnum">'+ur(i+1)+'</span><span class="pemo">'+p.e+'</span><span class="ptitle">'+p.t+'</span><span class="pchk">'+(done?'✅':'▾')+'</span></button><div class="pbody"><div class="row" style="margin-bottom:4px"><button class="btn ghost sp" style="padding:0 14px">🔊 سنو</button></div><div class="ptext">'+hl(p.text)+'</div><div class="gist" '+(done?'':'hidden')+'>⭐ <b>خلاصہ:</b> '+p.gist+'</div><div class="qwrap"></div></div></div>');
+  $('.phead',c).onclick=()=>{sfx('tap');c.classList.toggle('open')};
+  $('.sp',c).onclick=()=>speak(p.text);
+  const qw=$('.qwrap',c);
+  const m=mcq({q:p.q,o:p.o,hint:p.hint,done:(first,btn)=>{if(!S.paras[i]){S.paras[i]=1;save();xp(first?10:4,btn);$('.gist',c).hidden=false;$('.pchk',c).textContent='✅';upd();buildNav();say(first?'پہلی ہی کوشش میں! شاباش!':'اچھا، آخر کار صحیح جواب مل گیا!');if(Object.keys(S.paras).length>=PARAS.length)award('paras')}}});
+  qw.append(m);if(done){$$('.opt',m).forEach(b=>b.disabled=true);$('.fb',m).textContent='✅ یہ سوال تم پہلے حل کر چکے ہو۔'}
+  list.append(c)});upd()}
+
+/* ====================== الفاظ و معانی ====================== */
+function renderWords(){const sec=$('#words');
+ sec.innerHTML='<div class="banner">🔤 الفاظ و معانی</div><div class="card"><div class="hint">🃏 کارڈ پر ٹیپ کرو تو وہ پلٹ کر معنی اور مثال دکھائے گا۔ ہر نیا کارڈ پلٹنے پر ستارے ملتے ہیں۔</div><div class="bar"><i id="wbar"></i></div><div id="wcount" class="sub"></div></div><div class="wgrid" id="wgrid"></div>'+
+ '<div class="card"><h2>🧩 کھیل ۱: جوڑی ملاؤ</h2><div class="sub">پہلے دائیں طرف سے لفظ چنو، پھر بائیں طرف سے اس کا صحیح معنی۔</div><div id="matchBox"></div><div class="center"><button class="btn purple" id="matchNew">🔄 نیا دور</button></div></div>'+
+ '<div class="card"><h2>✏️ کھیل ۲: خالی جگہ بھرو</h2><div id="clozeBox"></div></div>'+nextBtn('central','اگلی منزل: مرکزی خیال');
+ const upd=()=>{const n=Object.keys(S.words).length;$('#wbar').style.width=n/WORDS.length*100+'%';$('#wcount').textContent='سیکھے ہوئے الفاظ: '+ur(n)+' / '+ur(WORDS.length)};
+ WORDS.forEach((w,i)=>{const c=COLS[i%COLS.length];
+  const f=h('<div class="flip" style="--c1:'+c[0]+';--c2:'+c[1]+'"><div class="in"><div class="face front"><span class="em">'+w.e+'</span><span class="w">'+w.w+'</span><small>👆 پلٹو</small></div><div class="face back"><div class="m">'+w.m+'</div><div class="ex">مثال: '+w.x+'</div></div></div></div>');
+  if(S.words[i])f.classList.add('seen');
+  f.onclick=()=>{f.classList.toggle('on');sfx('tap');if(!S.words[i]){S.words[i]=1;save();xp(2,f);upd();buildNav();if(Object.keys(S.words).length>=WORDS.length)award('words')}};
+  $('#wgrid').append(f)});upd();
+ renderMatch();$('#matchNew').onclick=renderMatch;renderCloze()}
+function renderMatch(){const box=$('#matchBox');const pick=shuffle(WORDS).slice(0,6);let mistakes=0,done=0,selB=null;
+ box.innerHTML='<div class="mcols"><div id="mw"></div><div id="mm"></div></div><div id="mres" class="center"></div>';
+ pick.forEach(w=>$('#mw').append(h('<button class="mbtn" data-i="'+w.i+'">'+w.w+'</button>')));
+ shuffle(pick).forEach(w=>$('#mm').append(h('<button class="mbtn m2" data-i="'+w.i+'">'+w.m+'</button>')));
+ box.onclick=e=>{const b=e.target.closest('.mbtn');if(!b||b.classList.contains('done'))return;
+  if(b.parentNode.id==='mw'){if(selB)selB.classList.remove('sel');selB=b;b.classList.add('sel');sfx('tap');return}
+  if(!selB){say('پہلے دائیں طرف سے ایک لفظ چنو۔');return}
+  if(selB.dataset.i===b.dataset.i){selB.classList.remove('sel');selB.classList.add('done');b.classList.add('done');selB=null;done++;sfx('ok');xp(3,b);
+   if(done===6){const pts=Math.max(10,30-mistakes*4);$('#mres').innerHTML='<h3>🎉 شاباش! تم نے '+ur(mistakes)+' غلطیاں کیں۔</h3>';xp(pts);confetti(100);S.match=(S.match||0)+1;save();buildNav();award('match')}}
+  else{mistakes++;sfx('bad');shake(b);shake(selB);selB.classList.remove('sel');selB=null;say('نہیں، دوبارہ کوشش کرو!')}}}
+const CLOZE=[
+ ['پاکستان کی ＿＿＿ اہمیت کی وجہ سے یہاں کئی جنگیں ہوئیں۔','جغرافیائی'],
+ ['یونیورسٹی کی پڑھائی مکمل ہونے پر طالب علم کو ＿＿＿ ملتی ہے۔','سند'],
+ ['ٹیکسلا گندھارا تہذیب کا ＿＿＿ تھا۔','دارالحکومت'],
+ ['کھدائی میں ملنے والی پرانی قیمتی چیزوں کو ＿＿＿ کہتے ہیں۔','نوادرات'],
+ ['سکندر اعظم نے مقامی حکمرانوں کو ＿＿＿ دی۔','شکست'],
+ ['ایک تاریخ دان نے ٹیکسلا کو ایک ＿＿＿ شہر قرار دیا۔','نفیس'],
+ ['تعلیم مکمل کرنے والے طلبہ ＿＿＿ کہلاتے ہیں۔','فارغ التحصیل'],
+ ['ساسانیوں نے ٹیکسلا پر ＿＿＿ کر لیا۔','قبضہ']];
+function renderCloze(){const box=$('#clozeBox');let i=0,score=0;
+ const show=()=>{if(i>=CLOZE.length){box.innerHTML='<div class="center"><h3>🏁 کھیل ختم! تمہارے '+ur(score)+' / '+ur(CLOZE.length)+' درست ہیں۔</h3><button class="btn purple" id="cAgain">🔄 دوبارہ کھیلو</button></div>';if(!S.cloze){S.cloze=1;save()}$('#cAgain').onclick=()=>{i=0;score=0;show()};return}
+  const it=CLOZE[i];const ans=it[1];const opts=[ans].concat(shuffle(WORDS.map(w=>w.w).filter(x=>x!==ans&&x!=='داغ بیل ڈالنا')).slice(0,3));
+  box.innerHTML='<div class="sub">سوال '+ur(i+1)+' / '+ur(CLOZE.length)+'</div><div class="ctext" style="line-height:2.4">'+it[0]+'</div>';
+  box.append(mcq({q:'صحیح لفظ چنو',o:opts,hint:'جملے کا مطلب سوچو۔',done:(first,b)=>{if(first){score++;xp(8,b)}else xp(2,b);const nx=h('<div class="center"><button class="btn green">اگلا سوال ➜</button></div>');$('button',nx).onclick=()=>{i++;show()};box.append(nx)}}))};
+ show()}
+
+/* ====================== مرکزی خیال ====================== */
+const CENTRAL=['ٹیکسلا دنیا کی پہلی باقاعدہ یونیورسٹی تھی جو علم کا عظیم مرکز بنی اور جس نے بڑے ماہر پیدا کیے۔','ٹیکسلا ایک جنگی قلعہ تھا جہاں صرف فوج کی تربیت ہوتی تھی۔','ٹیکسلا یونیورسٹی آج بھی پوری شان سے چل رہی ہے اور ہر سال نئے طلبہ داخل ہوتے ہیں۔','ٹیکسلا ایک بڑی تجارتی منڈی تھی جہاں صرف خرید و فروخت ہوتی تھی۔'];
+const PILL=[['یہ دنیا کی پہلی باقاعدہ یونیورسٹی تھی۔',1],['دور دور سے طلبہ یہاں علم حاصل کرنے آتے تھے۔',1],['یہاں سے چانکیہ، پانینی اور چرکا جیسے ماہر نکلے۔',1],['یہاں صرف بادشاہوں کے بچے پڑھ سکتے تھے۔',0],['یہ یونیورسٹی ہمیشہ قائم رہی اور کبھی تباہ نہ ہوئی۔',0],['یہاں کوئی استاد نہیں تھا، طلبہ خود پڑھتے تھے۔',0]];
+function renderCentral(){const sec=$('#central');
+ sec.innerHTML='<div class="banner">💡 مرکزی خیال</div>'+
+ '<div class="card"><h2>🎯 مرکزی خیال کیا ہوتا ہے؟</h2><p style="margin:0">مرکزی خیال سبق کی وہ سب سے اہم بات ہے جو پورا سبق پڑھ کر ہمارے ذہن میں رہ جاتی ہے۔ یہ سبق کی «جان» ہوتی ہے۔</p></div>'+
+ '<div class="card"><h2>🔎 قدم ۱: اصل مرکزی خیال پہچانو</h2><div id="cMcq"></div></div>'+
+ '<div class="card pillars"><h2>🏛️ قدم ۲: علم کے تین ستون روشن کرو</h2><div class="sub">نیچے ۶ جملوں میں سے وہ ٹیپ کرو جو سبق کے مطابق <b>سچ</b> ہیں۔ ہر درست جملے سے ایک ستون سنہری ہو جائے گا!</div>'+
+ '<svg viewBox="0 0 400 190"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe27a"/><stop offset="1" stop-color="#ff9f1c"/></linearGradient></defs><polygon points="30,60 200,10 370,60" fill="#f2d9a0" stroke="#c9b27a" stroke-width="3"/><rect x="40" y="62" width="320" height="16" fill="#f2d9a0" stroke="#c9b27a" stroke-width="3"/><rect class="col" id="col0" x="70" y="80" width="46" height="80" rx="4"/><rect class="col" id="col1" x="177" y="80" width="46" height="80" rx="4"/><rect class="col" id="col2" x="284" y="80" width="46" height="80" rx="4"/><rect x="40" y="160" width="320" height="20" rx="4" fill="#d9b77a" stroke="#c9b27a" stroke-width="3"/></svg><div id="pillBox"></div><div id="pillMsg" class="center"></div></div>'+
+ '<div class="card"><h2>❤️ قدم ۳: ہمیں فخر کیوں ہے؟</h2><p style="margin:0">ٹیکسلا ہمارے ملک پاکستان میں ہے۔ ایک جملہ لکھو کہ تمہیں اس پر فخر کیوں ہے۔</p><textarea id="proud" placeholder="مجھے ٹیکسلا پر فخر ہے کیونکہ…"></textarea><div class="center"><button class="btn teal" id="proudSave">💾 محفوظ کرو</button> <span id="proudMsg" class="saved"></span></div></div>'+nextBtn('summary','اگلی منزل: خلاصہ');
+ const chk=()=>{if(S.central.mcq&&S.central.pill>=3&&!S.central.done){S.central.done=1;save();buildNav();award('central')}};
+ $('#cMcq').append(mcq({q:'اس سبق کا مرکزی خیال کون سا ہے؟',o:CENTRAL,hint:'وہ جملہ چنو جو پورے سبق کی بات کرتا ہو۔',done:(f,b)=>{if(!S.central.mcq){S.central.mcq=1;save();xp(f?15:6,b);chk()}}}));
+ const pb=$('#pillBox');let lit=S.central.pill||0;const light=()=>{for(let i=0;i<3;i++)$('#col'+i).classList.toggle('lit',i<lit)};light();
+ shuffle(PILL).forEach(p=>{const b=h('<button class="stmt">'+p[0]+'</button>');
+  b.onclick=()=>{if(p[1]){b.classList.add('ok');lit++;S.central.pill=lit;save();light();sfx('ok');xp(5,b);if(lit>=3){$('#pillMsg').innerHTML='<h3>🌟 تینوں ستون روشن! علم کی عمارت مکمل!</h3>';confetti(120);chk()}}
+   else{b.classList.add('bad');shake(b);sfx('bad');say('یہ بات سبق کے مطابق درست نہیں۔ دوبارہ سوچو!')}};pb.append(b)});
+ if(lit>=3){$$('.stmt',pb).forEach(b=>{if(PILL.find(p=>p[0]===b.textContent&&p[1]))b.classList.add('ok')});$('#pillMsg').innerHTML='<h3>🌟 تینوں ستون روشن!</h3>'}
+ $('#proud').value=S.central.note||'';
+ $('#proudSave').onclick=()=>{const v=$('#proud').value.trim();if(v.length<8){say('تھوڑا سا اور لکھو!');return}const first=!S.central.note;S.central.note=v;save();$('#proudMsg').textContent='✔ محفوظ ہو گیا';if(first)xp(10,$('#proudSave'));say('بہت خوب! اپنے وطن پر فخر کرنا اچھی بات ہے 🇵🇰')}}
+
+/* ====================== خلاصہ ====================== */
+const SLIDES=[
+ {e:'🏛️',t:'بنیاد',p:'راولپنڈی کے قریب، گرینڈ ٹرنک روڈ کے پاس ٹیکسلا یونیورسٹی کی بنیاد پڑی۔ یہ حضرت عیسیٰ سے تقریباً ۶۰۰ سال پہلے بنی اور دنیا کی سب سے پرانی اور پہلی باقاعدہ یونیورسٹی مانی جاتی ہے۔',c:'#e2703a,#b8501c'},
+ {e:'📚',t:'تعلیمی نظام',p:'یہاں پڑھنے کے کمرے، لائبریری، طلبہ کے رہنے کی جگہ اور تعلیم کے بعد سند دینے کا نظام تھا۔ داخلہ سولہ سال کی عمر میں ہوتا تھا اور طب، قانون، فلسفہ، زراعت، جنگ اور فنِ تعمیر پڑھائے جاتے تھے۔',c:'#3f9bff,#1e5fb8'},
+ {e:'🌍',t:'دور دور کے طلبہ',p:'ہندوستان اور دنیا کے دور دراز علاقوں سے طلبہ علم حاصل کرنے آتے تھے۔ چانکیہ، چرکا، پانینی اور یاسان جت جیسے مشہور لوگ یہیں کے شاگرد تھے۔',c:'#8cc63f,#3f8a1d'},
+ {e:'👑',t:'حکمران آتے جاتے رہے',p:'سائرس، سکندر اعظم، موریا، یونانی، پارتھین، کشن اور ساسانی حکمران یہاں آتے رہے۔ اشوک کے دور میں ٹیکسلا صحیح معنوں میں تعلیمی مرکز بنا۔',c:'#6c4bd6,#3e2899'},
+ {e:'💔',t:'زوال',p:'ساسانیوں نے بدھ عبادت گاہوں اور درس گاہوں کو تباہ کر دیا اور یونیورسٹی کو شدید نقصان پہنچا۔ وہ دوبارہ اپنے پیروں پر کھڑی نہ ہو سکی۔',c:'#7a7a8a,#4a4a58'},
+ {e:'🔦',t:'دوبارہ دریافت',p:'۱۸۶۳ء میں الیگزینڈر کننگھم نے ٹیکسلا دریافت کیا اور دنیا نے اس عظیم تہذیب کی باقیات دیکھیں۔ چینی سیاح فاکسین اور ہوانگ سانگ کے سفرناموں سے بھی ہمیں معلومات ملتی ہیں۔',c:'#f7b500,#d17a00'}];
+const SUMC={parts:['ٹیکسلا یونیورسٹی ضلع ',0,' میں گرینڈ ٹرنک روڈ کے قریب بنی تھی۔ یہ حضرت عیسیٰ سے تقریباً ',1,' سال پہلے قائم ہوئی اور دنیا کی ',2,' باقاعدہ یونیورسٹی کہلاتی ہے۔ یہاں طلبہ ',3,' سال کی عمر میں داخل ہوتے تھے۔ ',4,' کے دور میں ٹیکسلا صحیح معنوں میں تعلیمی مرکز بنا۔ ',5,'ء میں الیگزینڈر کننگھم نے ٹیکسلا کو دریافت کیا۔'],ans:['راولپنڈی','۶۰۰','پہلی','سولہ','اشوک','۱۸۶۳'],extra:['لاہور','۱۰۰۰']};
+function renderSummary(){const sec=$('#summary');
+ sec.innerHTML='<div class="banner">📝 سبق کا خلاصہ</div><div class="card"><h2>📖 خلاصے کی کہانی</h2><div id="slide"></div><div class="dots" id="dots"></div><div class="center"><button class="btn ghost" id="sPrev">➜ پچھلا</button><button class="btn green" id="sNext">اگلا ⬅</button></div></div><div class="card"><h2>✍️ خلاصہ خود مکمل کرو</h2><div class="sub">خالی جگہ پر ٹیپ کرو، پھر نیچے سے صحیح لفظ چنو۔ غلط جگہ دوبارہ ٹیپ کر کے بدل سکتے ہو۔</div><div id="sumCloze"></div></div>'+nextBtn('games','اگلی منزل: کھیل');
+ let si=0;const draw=()=>{const s=SLIDES[si],c=s.c.split(',');$('#slide').innerHTML='<div class="slide" style="background:linear-gradient(135deg,'+c[0]+','+c[1]+')"><div class="big">'+s.e+'</div><h3>'+ur(si+1)+'۔ '+s.t+'</h3><p>'+s.p+'</p></div>';$('#dots').innerHTML=SLIDES.map((_,i)=>'<i class="'+(i===si?'on':'')+'"></i>').join('');$('#sPrev').disabled=si===0;$('#sNext').textContent=si===SLIDES.length-1?'🏁 مکمل':'اگلا ⬅'};
+ $('#sPrev').onclick=()=>{if(si>0){si--;draw();sfx('tap')}};
+ $('#sNext').onclick=()=>{if(si<SLIDES.length-1){si++;draw();sfx('tap')}else{say('اب نیچے خلاصہ خود مکمل کرو!');$('#sumCloze').scrollIntoView({behavior:'smooth',block:'center'})}};
+ draw();
+ const root=$('#sumCloze');let fill=Array(6).fill(null),act=0,res=null;const bank=shuffle(SUMC.ans.concat(SUMC.extra));
+ const redraw=()=>{let t='';SUMC.parts.forEach(p=>{if(typeof p==='number'){t+='<button class="blank '+(act===p?'act ':'')+(fill[p]?'filled ':'')+(res?(res[p]?'ok':'no'):'')+'" data-k="'+p+'">'+(fill[p]||'＿＿＿')+'</button>'}else t+=esc(p)});
+  root.innerHTML='<div class="ctext">'+t+'</div><div class="center" style="margin-top:8px">'+bank.map(b=>'<button class="chip" data-v="'+b+'" '+(fill.includes(b)?'disabled':'')+'>'+b+'</button>').join('')+'</div><div class="center"><button class="btn teal" id="sCheck">✔ جانچو</button> <button class="btn ghost" id="sReset">🔄 صاف کرو</button></div><div id="sMsg" class="center"></div>';
+  if(S.summary)$('#sMsg').innerHTML='<h3>✅ تم یہ پہلے مکمل کر چکے ہو!</h3>'};
+ root.onclick=e=>{const bl=e.target.closest('.blank'),ch=e.target.closest('.chip'),ck=e.target.closest('#sCheck'),rs=e.target.closest('#sReset');
+  if(bl){const k=+bl.dataset.k;if(fill[k]){fill[k]=null;if(res)res[k]=null}act=k;sfx('tap');redraw()}
+  else if(ch&&!ch.disabled){let k=fill[act]===null?act:fill.indexOf(null);if(k<0)return;fill[k]=ch.dataset.v;if(res)res[k]=null;const nx=fill.indexOf(null);act=nx<0?k:nx;sfx('tap');redraw()}
+  else if(rs){fill=Array(6).fill(null);act=0;res=null;redraw()}
+  else if(ck){if(fill.includes(null)){say('پہلے ساری خالی جگہیں بھرو!');return}res=fill.map((v,i)=>v===SUMC.ans[i]);redraw();const n=res.filter(Boolean).length;
+   if(n===6){$('#sMsg').innerHTML='<h3>🎉 زبردست! خلاصہ بالکل درست ہے!</h3>';sfx('win');confetti(140);if(!S.summary){S.summary=1;save();xp(30,$('#sMsg'));buildNav();award('summary')}}
+   else{$('#sMsg').innerHTML='<h3 style="color:#c0392b">'+ur(n)+' / ۶ درست۔ سرخ جگہیں ٹیپ کر کے بدلو۔</h3>';sfx('bad')}}};
+ redraw()}
+
+/* ====================== کھیل ====================== */
+const RIDDLES=[
+ {a:'سکندر اعظم',c:['میں یونان سے آیا تھا۔','میں ۳۲۶ قبل مسیح میں ٹیکسلا پہنچا۔','میں نے مقامی حکمرانوں کو شکست دے کر ٹیکسلا پر قبضہ کیا۔']},
+ {a:'اشوک',c:['میں چندر گپت موریا کا پوتا ہوں۔','میرے دور میں ٹیکسلا صحیح معنوں میں تعلیمی مرکز بنا۔','میں نے ٹیکسلا سے پاٹلی پتر تک سڑک بنوائی۔']},
+ {a:'چانکیہ',c:['میں ٹیکسلا یونیورسٹی کا طالب علم تھا۔','میں ایک بادشاہ کا مشیر بنا۔','میں چندر گپت موریا کا مشیر تھا۔']},
+ {a:'پانینی',c:['میں ٹیکسلا کا مشہور طالب علم ہوں۔','میں زبان کے قاعدوں کو خوب جانتا ہوں۔','میں سنسکرت زبان اور گرامر کا ماہر ہوں۔']},
+ {a:'چرکا',c:['میں بھی ٹیکسلا کا مشہور طالب علم ہوں۔','میں علاج معالجے کا ماہر ہوں۔','میں آیورویدک طریقہ علاج کا ماہر ہوں۔']},
+ {a:'الیگزینڈر کننگھم',c:['میں ۱۸۶۳ء میں آیا۔','میں نے ایک گم شدہ شہر ڈھونڈ نکالا۔','میں نے ٹیکسلا دریافت کیا۔']},
+ {a:'فاکسین',c:['میں چین سے آیا ہوا سیاح ہوں۔','میں نے ۴۰۵ عیسوی میں ٹیکسلا میں قیام کیا۔','میں نے اپنے سفرنامے میں ٹیکسلا کا ذکر کیا۔']}];
+const NAMES=['سکندر اعظم','اشوک','چانکیہ','پانینی','چرکا','الیگزینڈر کننگھم','فاکسین','چندر گپت موریا','سائرس اعظم','شیر شاہ سوری'];
+const TF=[
+ ['ٹیکسلا ضلع راولپنڈی میں ہے۔',1,'جی ہاں، ٹیکسلا راولپنڈی کے ضلع میں واقع ہے۔'],
+ ['ٹیکسلا یونیورسٹی حضرت عیسیٰ کے ۶۰۰ سال بعد بنی۔',0,'یہ حضرت عیسیٰ سے تقریباً ۶۰۰ سال پہلے بنی تھی۔'],
+ ['طلبہ کا داخلہ سولہ سال کی عمر میں ہوتا تھا۔',1,'جی ہاں، داخلہ سولہ سال کی عمر میں ہوتا تھا۔'],
+ ['ٹیکسلا میں طب اور قانون بھی پڑھائے جاتے تھے۔',1,'ٹھیک! طب، قانون، فلسفہ، زراعت اور بہت کچھ پڑھایا جاتا تھا۔'],
+ ['ٹیکسلا گندھارا تہذیب کا دارالحکومت تھا۔',1,'جی ہاں، یہ گندھارا کا دارالحکومت تھا۔'],
+ ['سکندر اعظم ۳۲۶ قبل مسیح میں ٹیکسلا آیا۔',1,'بالکل درست!'],
+ ['ٹیکسلا کو ۱۸۶۳ء میں کننگھم نے دریافت کیا۔',1,'درست! الیگزینڈر کننگھم نے اسے دریافت کیا۔'],
+ ['چانکیہ ٹیکسلا کا طالب علم نہیں تھا۔',0,'چانکیہ ٹیکسلا کا مشہور طالب علم تھا۔'],
+ ['ساسانیوں نے ٹیکسلا کی درس گاہیں نئی بنوائیں۔',0,'ساسانیوں نے بدھ عبادت گاہوں اور درس گاہوں کو تباہ کیا۔'],
+ ['اشوک نے ٹیکسلا سے پاٹلی پتر تک سڑک بنوائی۔',1,'جی ہاں، یہ اشوک کا کارنامہ ہے۔'],
+ ['فارغ التحصیل طلبہ کو اُستاد کا درجہ دیا جاتا تھا۔',1,'جی ہاں، وہ اپنے مضمون کے ماہر مانے جاتے تھے۔'],
+ ['ٹیکسلا یونیورسٹی میں کوئی لائبریری نہیں تھی۔',0,'لائبریری، کمرے اور رہائش سب کچھ موجود تھا۔']];
+const SUBJ=[['طب',1],['قانون',1],['فلسفہ',1],['زراعت',1],['جنگ کی تربیت',1],['فنِ تعمیر',1],['جانوروں کو سدھانا',1],['کمپیوٹر پروگرامنگ',0],['ہوائی جہاز اڑانا',0],['موبائل ایپ بنانا',0],['خلائی سفر',0]];
+function renderGames(){const sec=$('#games');
+ sec.innerHTML='<div class="banner">🎮 کھیل کھیل میں سیکھو</div><div class="card"><h2>🕵️ کھیل ۱: کون ہوں میں؟</h2><div class="sub">کم اشاروں میں پہچانو گے تو زیادہ ستارے ملیں گے!</div><div id="rid"></div></div><div class="card"><h2>🎒 کھیل ۲: ٹیکسلا میں کیا پڑھایا جاتا تھا؟</h2><div class="sub">وہ سب مضامین چنو جو ٹیکسلا میں پڑھائے جاتے تھے۔</div><div id="subj"></div></div><div class="card"><h2>⚖️ کھیل ۳: سچ یا جھوٹ؟</h2><div id="tf"></div></div>'+nextBtn('timeline','اگلی منزل: ٹائم لائن');
+ /* معمّے */
+ const rid=$('#rid');let ri=0,rok=0;const order=shuffle(RIDDLES);
+ const rshow=()=>{if(ri>=order.length){rid.innerHTML='<div class="center"><h3>🏁 معمّے ختم! '+ur(rok)+' / '+ur(order.length)+' درست</h3><button class="btn purple" id="rAgain">🔄 دوبارہ</button></div>';$('#rAgain').onclick=()=>{ri=0;rok=0;rshow()};if(!S.riddles){S.riddles=1;save();buildNav()}if(rok>=order.length-1)award('riddle');return}
+  const r=order[ri];let shown=1;const opts=[r.a].concat(shuffle(NAMES.filter(n=>n!==r.a)).slice(0,3));
+  rid.innerHTML='<div class="sub">معمّہ '+ur(ri+1)+' / '+ur(order.length)+'</div><div id="clues"></div><div class="center"><button class="btn gold" id="moreClue">💡 ایک اور اشارہ</button></div><div id="rOpts"></div><div id="rFb" class="center"></div>';
+  const cl=$('#clues');const addC=()=>cl.append(h('<div class="clue">🔎 '+r.c[shown-1]+'</div>'));addC();
+  $('#moreClue').onclick=()=>{if(shown<3){shown++;addC();sfx('tap')}if(shown>=3)$('#moreClue').disabled=true};
+  const ro=$('#rOpts');shuffle(opts).forEach(n=>{const b=h('<button class="opt">'+n+'</button>');b.onclick=()=>{if(b.disabled)return;
+   if(n===r.a){$$('.opt',ro).forEach(x=>x.disabled=true);b.classList.add('ok');const pts=[0,14,9,5][shown];rok++;sfx('ok');xp(pts,b);$('#rFb').innerHTML='🎉 درست! '+ur(shown)+' اشاروں میں پہچان لیا۔<br>';const nx=h('<button class="btn green">اگلا معمّہ ➜</button>');nx.onclick=()=>{ri++;rshow()};$('#rFb').append(nx);$('#moreClue').disabled=true}
+   else{b.classList.add('bad');b.disabled=true;shake(b);sfx('bad');if(shown<3&&$('#moreClue').disabled===false){shown++;addC()}}};ro.append(b)})};
+ rshow();
+ /* مضامین */
+ const sj=$('#subj');const sel={};
+ sj.innerHTML='<div class="center" id="sjc"></div><div class="center"><button class="btn teal" id="sjCheck">✔ جانچو</button></div><div id="sjMsg" class="center"></div>';
+ shuffle(SUBJ).forEach((s,i)=>{const c=h('<button class="chip tg">'+s[0]+'</button>');c.onclick=()=>{if(c.classList.contains('ok')||c.classList.contains('no'))return;c.classList.toggle('sel');sel[i]=c.classList.contains('sel');sfx('tap')};c._ok=s[1];$('#sjc',sj).append(c)});
+ $('#sjCheck').onclick=()=>{let right=0,wrong=0;$$('.chip',sj).forEach(c=>{const on=c.classList.contains('sel');c.classList.remove('sel');if(on&&c._ok){c.classList.add('ok');right++}else if(on&&!c._ok){c.classList.add('no');wrong++}else if(!on&&c._ok){c.classList.add('no')}});
+  const miss=SUBJ.filter(s=>s[1]).length-right;
+  $('#sjMsg').innerHTML=(wrong===0&&miss===0)?'<h3>🎉 کمال! سب بالکل درست!</h3>':'<h3>درست: '+ur(right)+'، غلط چنے: '+ur(wrong)+'، رہ گئے: '+ur(miss)+'</h3><div class="sub">سرخ نشان والے یا تو غلط چنے گئے یا رہ گئے تھے۔ کمپیوٹر، جہاز اور خلائی سفر تو اس زمانے میں تھے ہی نہیں! 😄</div>';
+  if(wrong===0&&miss===0){sfx('win');confetti(100)}else sfx('bad');
+  const pts=Math.max(5,25-(wrong+miss)*5);if(!S.subjects){S.subjects=1;save();xp(pts,$('#sjCheck'));buildNav()}$('#sjCheck').disabled=true};
+ /* سچ جھوٹ */
+ const tf=$('#tf');let ti=0,tok=0,streak=0;const tq=shuffle(TF).slice(0,10);
+ const tshow=()=>{if(ti>=tq.length){tf.innerHTML='<div class="center"><h3>🏁 نتیجہ: '+ur(tok)+' / '+ur(tq.length)+' درست</h3><button class="btn purple" id="tAgain">🔄 دوبارہ</button></div>';$('#tAgain').onclick=()=>{ti=0;tok=0;streak=0;tshow()};if(!S.tf){S.tf=1;save();buildNav()}if(tok>=8)award('tf');return}
+  const q=tq[ti];tf.innerHTML='<div class="sub">سوال '+ur(ti+1)+' / '+ur(tq.length)+' <span class="streak">'+(streak>1?'🔥 لگاتار '+ur(streak):'')+'</span></div><div class="tfcard">'+q[0]+'</div><div class="center"><button class="btn green tfb" data-v="1">✅ سچ</button><button class="btn tfb" data-v="0" style="background:#d6453d;box-shadow:0 5px 0 #8f2620">❌ جھوٹ</button></div><div id="tfFb" class="center"></div>';
+  $$('.tfb',tf).forEach(b=>b.onclick=()=>{const ok=(+b.dataset.v)===q[1];$$('.tfb',tf).forEach(x=>x.disabled=true);
+   if(ok){tok++;streak++;sfx('ok');xp(5,b)}else{streak=0;sfx('bad');shake($('.tfcard',tf))}
+   const nx=h('<button class="btn gold">اگلا ➜</button>');nx.onclick=()=>{ti++;tshow()};$('#tfFb').innerHTML='<div class="hint">'+(ok?'🎉 درست! ':'🙈 غلط! ')+q[2]+'</div>';$('#tfFb').append(nx)})};
+ tshow()}
+
+/* ====================== ٹائم لائن ====================== */
+let tlMode='tm',tmI=0,tlStage=1,tlSel=null;const trayOrder={};
+function stageEvents(s){return EV.filter(e=>e.s===s)}
+const stageDone=s=>stageEvents(s).every(e=>S.tlPlaced[e.id]);
+const stageOpen=s=>s===1||stageDone(s-1);
+function renderTimeline(){const sec=$('#timeline');
+ sec.innerHTML='<div class="banner">🕰️ تاریخ کی ٹائم لائن</div><div class="card"><div class="stabs"><button class="stab" data-m="tm">🔭 ٹائم مشین (دیکھو)</button><button class="stab" data-m="build">🛠️ خود ٹائم لائن بناؤ (لکھو)</button><button class="stab" data-m="book">📘 میری تاریخ کی کتاب</button></div><div id="tlBody"></div></div>'+nextBtn('trophy','اگلی منزل: انعامات اور امتحان');
+ $$('.stab[data-m]',sec).forEach(b=>b.onclick=()=>{tlMode=b.dataset.m;sfx('tap');drawTL()});
+ if(!stageOpen(tlStage))tlStage=1;drawTL()}
+function drawTL(){$$('.stab[data-m]').forEach(b=>b.classList.toggle('on',b.dataset.m===tlMode));const body=$('#tlBody');
+ if(tlMode==='tm')drawTM(body);else if(tlMode==='build')drawBuild(body);else drawBook(body)}
+function drawTM(body){body.innerHTML='<div class="hint">🚀 ٹائم مشین میں بیٹھو اور ٹیکسلا کی پوری تاریخ دیکھو۔ سفر دائیں سے بائیں ہوتا ہے۔ جب تیار ہو جاؤ تو «خود ٹائم لائن بناؤ» پر جا کر تاریخ اپنے ہاتھ سے لکھو!</div><div class="tm" id="tmCard"></div><div class="path" id="tmPath"></div><div class="center"><button class="btn ghost" id="tmP">➜ پیچھے</button><button class="btn green" id="tmN">آگے ⬅</button><button class="btn purple" id="tmB">🛠️ اب خود بناؤں گا</button></div>';
+ const p=$('#tmPath');p.innerHTML='<div class="rider" id="rider">🚀</div>'+EV.map((e,i)=>'<button class="pn" data-i="'+i+'" style="inset-inline-start:'+(2+i*(96/(EV.length-1)))+'%" title="'+e.t+'">'+ur(i+1)+'</button>').join('');
+ const upd=()=>{const e=EV[tmI];const card=$('#tmCard');card.style.background='linear-gradient(135deg,'+e.c[0]+','+e.c[1]+')';
+  let fl='';for(let i=0;i<8;i++)fl+='<span class="fl" style="inset-inline-start:'+Math.round(Math.random()*92)+'%;animation-duration:'+(6+Math.random()*6)+'s;animation-delay:-'+Math.random()*6+'s">'+e.e+'</span>';
+  card.innerHTML=fl+'<div class="big">'+e.e+'</div><div class="yr">'+e.y+'</div><h3>'+ur(tmI+1)+'۔ '+e.t+'</h3><p>'+e.d+'</p>';
+  $$('.pn',p).forEach((b,i)=>{b.classList.toggle('on',i===tmI);b.classList.toggle('past',i<tmI)});$('#rider').style.insetInlineStart=(2+tmI*(96/(EV.length-1)))+'%';
+  $('#tmP').disabled=tmI===0;$('#tmN').disabled=tmI===EV.length-1};
+ $('#tmP').onclick=()=>{if(tmI>0){tmI--;upd();sfx('tap')}};
+ $('#tmN').onclick=()=>{if(tmI<EV.length-1){tmI++;upd();sfx('tap')}};
+ $('#tmB').onclick=()=>{tlMode='build';drawTL()};
+ $$('.pn',p).forEach(b=>b.onclick=()=>{tmI=+b.dataset.i;upd();sfx('tap')});upd()}
+function drawBuild(body){
+ let tabs='';[1,2,3].forEach(s=>{const op=stageOpen(s),dn=stageDone(s);tabs+='<button class="stab '+(s===tlStage?'on':'')+'" data-s="'+s+'" '+(op?'':'disabled')+'>'+(op?(dn?'✅':'🔓'):'🔒')+' '+STAGE_NAMES[s]+'</button>'});
+ const evs=stageEvents(tlStage);const placedN=evs.filter(e=>S.tlPlaced[e.id]).length;
+ if(!trayOrder[tlStage])trayOrder[tlStage]=shuffle(evs.map(e=>e.id));
+ const tray=trayOrder[tlStage].filter(id=>!S.tlPlaced[id]).map(id=>EV.find(e=>e.id===id));
+ body.innerHTML='<div class="stabs">'+tabs+'</div><div class="hint">🧠 نیچے واقعات کے کارڈ بے ترتیب ہیں۔ کارڈ پر ٹیپ کرو (یا گھسیٹو)، پھر اسے <b>تاریخ کی صحیح ترتیب</b> والی جگہ پر رکھو۔ سن اور دور دیکھ کر سوچو کہ پہلے کیا ہوا تھا! صحیح جگہ پر کارڈ کھل جائے گا اور تم اپنے الفاظ میں لکھ سکو گے۔</div><div class="bar"><i style="width:'+(placedN/evs.length*100)+'%"></i></div><div class="sub">اس مرحلے میں: '+ur(placedN)+' / '+ur(evs.length)+' مکمل</div>'+
+ '<h3>🃏 واقعات کے کارڈ</h3><div class="tray" id="tray">'+(tray.length?'':'<div class="center" style="width:100%">🎉 اس مرحلے کے سارے کارڈ لگ گئے!</div>')+'</div><h3 style="margin-top:12px">🛣️ تاریخ کا راستہ (پہلا واقعہ اوپر)</h3><div class="roadmap" id="road"></div>';
+ $$('.stab[data-s]',body).forEach(b=>b.onclick=()=>{tlStage=+b.dataset.s;tlSel=null;sfx('tap');drawBuild(body)});
+ const tr=$('#tray');tray.forEach(e=>{const c=h('<button class="ecard" draggable="true" style="--c1:'+e.c[0]+';--c2:'+e.c[1]+'"><span style="font-size:1.6em;line-height:1.5;display:block">'+e.e+'</span>'+e.t+'<small>'+e.y+'</small></button>');
+  c.onclick=()=>{tlSel=tlSel===e.id?null:e.id;$$('.ecard',tr).forEach(x=>x.classList.remove('sel'));if(tlSel)c.classList.add('sel');sfx('tap');if(tlSel)say('اب اسے صحیح جگہ پر رکھو!',2500)};
+  c.addEventListener('dragstart',ev=>{ev.dataTransfer.setData('text/plain',String(e.id));tlSel=e.id});tr.append(c)});
+ const road=$('#road');evs.forEach((e,idx)=>{
+  if(S.tlPlaced[e.id]){const s=h('<div class="slot filled" style="--c1:'+e.c[0]+';--c2:'+e.c[1]+'"><div class="node">'+ur(idx+1)+'</div><div class="shead"><span class="semo">'+e.e+'</span><span class="syear">'+e.y+'</span><b>'+e.t+'</b></div><p style="margin:0">'+e.d+'</p><div class="sub" style="margin-top:4px">🖍️ اپنا اسٹیکر چنو:</div><div class="stick"></div><textarea placeholder="اپنے الفاظ میں اس واقعے کے بارے میں ایک دو جملے لکھو…" style="min-height:80px"></textarea><small class="saved"></small></div>');
+   const st=$('.stick',s);STICKERS.forEach(k=>{const b=h('<button class="'+(S.tlStick[e.id]===k?'on':'')+'">'+k+'</button>');b.onclick=()=>{S.tlStick[e.id]=k;save();$$('button',st).forEach(x=>x.classList.toggle('on',x===b));sfx('tap')};st.append(b)});
+   const ta=$('textarea',s);ta.value=S.tlNotes[e.id]||'';let tm;ta.oninput=()=>{clearTimeout(tm);tm=setTimeout(()=>{S.tlNotes[e.id]=ta.value;save();$('.saved',s).textContent='✔ محفوظ';if(ta.value.trim().length>=15&&!S.tlNoteXP[e.id]){S.tlNoteXP[e.id]=1;save();xp(5,ta);say('واہ! تم نے اپنے الفاظ میں لکھا، یہی اصل سیکھنا ہے!')}},500)};road.append(s)}
+  else{const s=h('<div class="slot" data-id="'+e.id+'"><div class="node">'+ur(idx+1)+'</div>❔ واقعہ نمبر '+ur(idx+1)+' یہاں آئے گا… (کارڈ چنو اور یہاں ٹیپ کرو)</div>');
+   const place=cid=>{tlSel=null;if(cid===e.id){S.tlPlaced[e.id]=1;save();sfx('ok');xp(8);confetti(50);buildNav();say('بالکل صحیح جگہ!');
+     if(stageEvents(tlStage).every(x=>S.tlPlaced[x.id])){if(EV.every(x=>S.tlPlaced[x.id])){setTimeout(()=>{award('time');toast('🎉 پوری ٹائم لائن مکمل! اب «میری تاریخ کی کتاب» دیکھو')},400)}else{toast('🔓 اگلا مرحلہ کھل گیا!');confetti(100)}}
+     drawBuild(body);const f=$('.slot.filled:last-of-type',body)}
+    else{const c=EV.find(x=>x.id===cid);sfx('bad');shake(s);say(c&&c.id<e.id?'یہ واقعہ اس سے پہلے ہوا تھا۔ سن غور سے دیکھو!':'یہ واقعہ اس کے بعد ہوا تھا۔ ابھی کوئی اور پہلے آئے گا!',4200)}};
+   s.onclick=()=>{if(tlSel)place(tlSel);else say('پہلے اوپر سے کوئی کارڈ چنو۔',2800)};
+   s.addEventListener('dragover',ev=>{ev.preventDefault();s.classList.add('dropt')});s.addEventListener('dragleave',()=>s.classList.remove('dropt'));
+   s.addEventListener('drop',ev=>{ev.preventDefault();s.classList.remove('dropt');const id=+ev.dataTransfer.getData('text/plain')||tlSel;if(id)place(id)});road.append(s)}})}
+function bookHTML(forPrint){const n=EV.filter(e=>S.tlPlaced[e.id]).length;
+ let t='<h2 style="color:#e2703a;margin:0">📘 '+esc(S.name||'طالب علم')+' کی تاریخ کی کتاب</h2><div class="sub">موضوع: ٹیکسلا یونیورسٹی • مکمل واقعات: '+ur(n)+' / '+ur(EV.length)+'</div>';
+ EV.forEach(e=>{const ok=S.tlPlaced[e.id];t+=ok?'<div class="bookp" style="--c1:'+e.c[0]+'"><b>'+(S.tlStick[e.id]||e.e)+' '+e.y+' — '+e.t+'</b><div>'+e.d+'</div>'+(S.tlNotes[e.id]?'<div class="nt">✍️ میرے الفاظ: '+esc(S.tlNotes[e.id])+'</div>':'')+'</div>':'<div class="bookp empty">❔ '+e.y+' — ابھی یہ واقعہ ٹائم لائن میں نہیں لگایا۔</div>'});return t}
+function drawBook(body){body.innerHTML=bookHTML()+'<div class="center"><button class="btn teal" id="bPrint">🖨️ پرنٹ کرو</button><button class="btn purple" id="bDl">⬇️ ٹیکسٹ فائل بنا کر محفوظ کرو</button></div>';
+ $('#bPrint').onclick=()=>printEl(bookHTML());
+ $('#bDl').onclick=()=>{let t='ٹیکسلا یونیورسٹی – '+(S.name||'طالب علم')+' کی تاریخ کی کتاب\n\n';EV.forEach(e=>{if(S.tlPlaced[e.id])t+=e.y+' — '+e.t+'\n'+e.d+'\n'+(S.tlNotes[e.id]?'میرے الفاظ: '+S.tlNotes[e.id]+'\n':'')+'\n'});
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download='texila_timeline.txt';a.click()}catch(e){say('فائل محفوظ نہ ہو سکی۔')}}}
+function printEl(html){const ps=$('#printSheet');ps.innerHTML=html;setTimeout(()=>{try{window.print()}catch(e){say('پرنٹ کا حکم نہیں چل سکا۔')}},60)}
+
+/* ====================== انعامات اور امتحان ====================== */
+const QB=[
+ ['ٹیکسلا یونیورسٹی کس ضلع میں ہے؟',['راولپنڈی','لاہور','ملتان','پشاور']],
+ ['ٹیکسلا یونیورسٹی تقریباً کتنے سال قبل مسیح میں بنی؟',['۶۰۰ سال','۳۲۶ سال','۹۰ سال','۴۶ سال']],
+ ['ٹیکسلا میں طلبہ کا داخلہ کتنی عمر میں ہوتا تھا؟',['سولہ سال','آٹھ سال','بیس سال','پانچ سال']],
+ ['ٹیکسلا کس تہذیب کا دارالحکومت تھا؟',['گندھارا','مصری','یونانی','رومی']],
+ ['سکندر اعظم نے ٹیکسلا پر کب قبضہ کیا؟',['۳۲۶ قبل مسیح','۶۰۰ قبل مسیح','۷۶ عیسوی','۱۸۶۳ عیسوی']],
+ ['ٹیکسلا کا نام روایت کے مطابق کس کے نام پر پڑا؟',['ٹاکسا','اشوک','چرکا','سائرس']],
+ ['ٹیکسلا سے پاٹلی پتر تک سڑک کس نے بنوائی؟',['اشوک','سکندر اعظم','شاہ پور دوئم','کننگھم']],
+ ['ٹیکسلا کو ۱۸۶۳ء میں کس نے دریافت کیا؟',['الیگزینڈر کننگھم','ہوانگ سانگ','چانکیہ','فاکسین']],
+ ['ساسانیوں نے ٹیکسلا کے ساتھ کیا کیا؟',['درس گاہوں کو تباہ کر دیا','نئی یونیورسٹی بنائی','لائبریری بنوائی','شہر کو دارالحکومت بنایا']],
+ ['چانکیہ کس بادشاہ کا مشیر تھا؟',['چندر گپت موریا','سکندر اعظم','اشوک','سائرس']],
+ ['پانینی کس چیز کے ماہر تھے؟',['سنسکرت زبان اور گرامر','طب','فنِ تعمیر','زراعت']],
+ ['چرکا کس طریقہ علاج کے ماہر تھے؟',['آیورویدک','جنگی','تعمیراتی','زرعی']],
+ ['«سند» کا کیا مطلب ہے؟',['تعلیم مکمل ہونے کا تحریری ثبوت','ایک پرانی عمارت','فوج کا افسر','ایک قسم کا کھیل']],
+ ['«نفیس» کا کیا مطلب ہے؟',['عمدہ اور خوب صورت','بہت پرانا','بہت بڑا','ہارا ہوا']],
+ ['چین کے دو سیاح کون سے تھے جنہوں نے ٹیکسلا کا ذکر کیا؟',['فاکسین اور ہوانگ سانگ','چانکیہ اور پانینی','اشوک اور سکندر','سائرس اور تھامس']]];
+let qz=null;
+function renderTrophy(){const sec=$('#trophy');
+ sec.innerHTML='<div class="banner">🏆 انعامات اور امتحان</div><div class="card"><h2>🏅 تمہارے انعامات</h2><div class="badges">'+BADGES.map(b=>'<div class="bdg '+(S.badges[b.id]?'on':'')+'"><span class="em">'+b.e+'</span><b>'+b.t+'</b><small>'+b.d+'</small></div>').join('')+'</div></div><div class="card"><h2>🎓 آخری امتحان</h2><div id="quiz"></div></div><div id="certWrap"></div>';
+ startQuiz();if(S.quiz>=6)showCert(S.quiz)}
+function startQuiz(){const box=$('#quiz');
+ box.innerHTML='<p style="margin:0">۱۰ سوال، ہر سوال کے ۱۰ پوائنٹ۔ ۸ یا زیادہ درست جوابات پر «ٹیکسلا گریجویٹ» کا انعام ملے گا!'+(S.quiz>=0?'<br>تمہارا بہترین اسکور: <b>'+ur(S.quiz)+' / ۱۰</b>':'')+'</p><div class="center"><button class="btn gold" id="qGo" style="font-size:1.2em">🚀 امتحان شروع کرو</button></div>';
+ $('#qGo').onclick=()=>{qz={q:shuffle(QB).slice(0,10),i:0,s:0};qshow()}}
+function qshow(){const box=$('#quiz');
+ if(qz.i>=qz.q.length){const sc=qz.s;const stars=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  box.innerHTML='<div class="center"><div class="stars">'+('⭐'.repeat(stars)||'💪')+'</div><h3>تمہارے '+ur(sc)+' / ۱۰ نمبر آئے!</h3><p>'+(sc>=8?'زبردست! تم ٹیکسلا گریجویٹ بن گئے! 🎓':sc>=6?'اچھا! تھوڑی اور محنت سے انعام مل جائے گا۔':'کوئی بات نہیں، پیراگراف اور خلاصہ دوبارہ دیکھو اور پھر کوشش کرو۔')+'</p><button class="btn purple" id="qAgain">🔄 دوبارہ امتحان</button></div>';
+  $('#qAgain').onclick=()=>{qz={q:shuffle(QB).slice(0,10),i:0,s:0};qshow()};
+  if(sc>S.quiz){S.quiz=sc;save()}buildNav();xp(sc*5);if(sc>=8){award('grad');confetti(200)}else if(sc>=6)confetti(80);
+  if(sc>=6)showCert(sc);return}
+ const it=qz.q[qz.i];box.innerHTML='<div class="sub">سوال '+ur(qz.i+1)+' / ۱۰ • درست: '+ur(qz.s)+'</div><div class="bar"><i style="width:'+(qz.i/10*100)+'%"></i></div>';
+ box.append(mcq({q:it[0],o:it[1],done:(first,b)=>{if(first){qz.s++;xp(5,b)}const nx=h('<div class="center"><button class="btn green">'+(qz.i===9?'🏁 نتیجہ دیکھو':'اگلا سوال ➜')+'</button></div>');$('button',nx).onclick=()=>{qz.i++;qshow()};box.append(nx)}}))}
+function certHTML(sc){const lv=LV[level()];const d=ur(new Date().toLocaleDateString('en-GB'));
+ return '<div class="cert"><div class="cert-in"><div class="seal">🏛️</div><div class="cert-t">سرٹیفکیٹ برائے کامیابی</div><p style="margin:0">یہ سرٹیفکیٹ <b style="font-size:1.4em;color:#e2703a">'+esc(S.name||'طالب علم')+'</b> کو دیا جاتا ہے جس نے «ٹیکسلا یونیورسٹی» کے سبق میں شاندار کارکردگی دکھائی۔</p><p style="margin:0">امتحان کے نمبر: <b>'+ur(sc)+' / ۱۰</b> • کل ستارے: <b>'+ur(S.xp)+'</b> • سطح: <b>'+lv.e+' '+lv.t+'</b></p><p style="margin:0">تاریخ: '+d+'</p><div style="font-size:2em">🦉 ٹِکّو اُلّو کے دستخط</div></div></div>'}
+function showCert(sc){const w=$('#certWrap');w.innerHTML='<div class="card"><h2>📜 تمہارا سرٹیفکیٹ</h2>'+certHTML(sc)+'<div class="center"><button class="btn teal" id="cPrint">🖨️ سرٹیفکیٹ پرنٹ کرو</button></div></div>';$('#cPrint').onclick=()=>printEl(certHTML(sc))}
+addEventListener('afterprint',()=>{$('#printSheet').innerHTML=''});
+
+/* ====================== آغاز ====================== */
+$('#snd').onclick=()=>{S.sound=!S.sound;save();hud();sfx('tap')};
+function askName(){$('#nameIn').value=S.name||'';$('#modal').classList.add('show');setTimeout(()=>$('#nameIn').focus(),100)}
+$('#nameChip').onclick=askName;
+const nameGo=()=>{S.name=($('#nameIn').value.trim()||'طالب علم');save();$('#modal').classList.remove('show');hud();renderAll();say('خوش آمدید '+S.name+'! چلو سیکھتے ہیں!',4500);sfx('win')};
+$('#nameGo').onclick=nameGo;$('#nameIn').addEventListener('keydown',e=>{if(e.key==='Enter')nameGo()});
+function renderAll(){renderHome();renderParas();renderWords();renderCentral();renderSummary();renderGames();renderTimeline();renderTrophy();buildNav()}
+hud();renderAll();if(!S.name)askName();else say('خوش آمدید '+S.name+'! ہم دوبارہ مل گئے!',3800);
+})();
+</script>
+</body>
+</html>
